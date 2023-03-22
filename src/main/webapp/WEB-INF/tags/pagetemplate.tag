@@ -21,22 +21,23 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="index.jsp">
-                <img src="${pageContext.request.contextPath}/images/cphbusiness.png" width="400px;" class="img-fluid"/>
+                <div class ="header">
+                <img src="${pageContext.request.contextPath}/images/cupcake2.png" width="700px" class="img-fluid"/>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Page 1</a>
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Page 2</a>
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Page 3</a>
+                <div class="navbar-nav" style="top: -20px">
+                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/" id="navfont">Se ordrer</a>
+                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/" id="navfont">???</a>
+                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/" id="navfont">[Balance+Email]</a>
                     <c:if test="${sessionScope.user == null }">
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Login</a>
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp" id="navfont">Login</a>
                     </c:if>
                     <c:if test="${sessionScope.user != null }">
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout">Log out</a>
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout" id="navfont">Log out</a>
                     </c:if>
                 </div>
             </div>
@@ -54,16 +55,16 @@
     <hr/>
     <div class="row mt-4">
         <div class="col">
-            Nørgaardsvej 30<br/>
-            2800 Lyngby
+            Røvej 6<br/>
+            3770 Olsker
         </div>
         <div class="col">
-            <jsp:invoke fragment="footer"/><br/>
-            <p>&copy; 2022 Cphbusiness</p>
+            Cupcake projekt 2. sem
+            <p>&copy; 2023 Cphbusiness</p>
         </div>
         <div class="col">
-            Datamatikeruddannelsen<br/>
-            2. semester efterår 2022
+            De bedste cupcakes på Bornholm!<br/>
+            Det siger vores kunder i hvert fald
         </div>
     </div>
 
