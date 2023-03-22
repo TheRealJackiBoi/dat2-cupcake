@@ -10,6 +10,11 @@ th, td {
     border: 1px solid silver;
     padding:15px;
 }
+.container{
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+}
 
 
 
