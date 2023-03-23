@@ -21,15 +21,16 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="index.jsp">
-                <div class ="header">
-                <img src="${pageContext.request.contextPath}/images/cupcake2.png" width="700px" class="img-fluid"/>
+                <div class ="header" style="text-align: center;">
+                <img src="${pageContext.request.contextPath}/images/cupcake3.png" width="700px" class="img-fluid"/>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-                <div class="navbar-nav" style="top: -20px">
+                <div class="navbarstyle">
+                   <div class="navbar-nav">
                     <a class="nav-item nav-link" href="${pageContext.request.contextPath}/" id="navfont">Se ordrer</a>
                     <a class="nav-item nav-link" href="${pageContext.request.contextPath}/" id="navfont">???</a>
                     <a class="nav-item nav-link" href="${pageContext.request.contextPath}/" id="navfont">[Balance+Email]</a>
@@ -37,8 +38,12 @@
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp" id="navfont">Login</a>
                     </c:if>
                     <c:if test="${sessionScope.user != null }">
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/" id="navfontuser">Se ordrer</a>
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/" id="navfontuser">???</a>
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/" id="navfont">[Balance+Email]</a>
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout" id="navfont">Log out</a>
                     </c:if>
+                  </div>
                 </div>
             </div>
         </div>
