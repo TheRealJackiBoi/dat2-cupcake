@@ -9,92 +9,103 @@
     </jsp:attribute>
 
     <jsp:attribute name="footer">
-        cyka blyat det bliver en fin kage!
+        Olsker cupcake!
     </jsp:attribute>
 
     <jsp:body>
-
-        <!--this is showing the bottomlist-->
-        <div>
-            <p>Vælg cupcake bund!</p>
-            <li>
-                <ul>
-                    <c:forEach var="cupcakebottom" items="${requestScope.bottomList}">
-                        <input type="radio" id="${cupcakebottom.bottomId}" name="bottomCake"
-                               value="${cupcakebottom.name}">
+        <div class="container">
+            <div class="row">
+                <!--this is showing the bottomlist-->
+                <div class="col">
+                    <p>Vælg cupcake-bund!</p>
+                    <c:forEach var="cupcakebottom" items="${requestScope.bottomCakeList}">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="buttomcake" name="bottomcake"
+                                   value="${cupcakebottom.bottomId}">
+                            <label class="form-check-label" for="buttomcake">${cupcakebottom.name}
+                                til ${cupcakebottom.price}</label>
+                        </div>
                     </c:forEach>
-                </ul>
-            </li>
-        </div>
+                </div>
 
-        <!-- this is showing the toplist-->
-        <div>
-            <p>Vælg din topping!</p>
-            <li>
-                <ul>
-                    <c:forEach var="cupcaketop" items="${requestScope.topList}">
-                        <input type="radio" id="${cupcaketop.topId}" name="topCake" value="${cupcaketop.name}">
+                <!-- this is showing the toplist-->
+                <div class="col">
+                    <p>Vælg din topping!</p>
+                    <c:forEach var="cupcaketop" items="${requestScope.topCakeList}">
+                        <div class="form-check">
+                            <input type="radio" id="cupcaketop" name="topCake" value="${cupcaketop.topId}">
+                            <label class="form-check-label" for="cupcaketop">${cupcaketop.name}
+                                til ${cupcaketop.price}</label>
+                        </div>
                     </c:forEach>
-                </ul>
-            </li>
-        </div>
+                </div>
 
-        <!-- Default dropright button -->
-        <div class="btn-group dropright">
-            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                Vælg antal cupcakes!
-            </button>
-            <div class="dropdown-menu">
-                <!-- skulle lave en drop down med op til 10-->
-                <form>
-                    <input type="number" name="numberofcakes" min="1" max="10">
-                </form>
+                <div class="col">
+                    <select class="form-select" aria-labelledby="numberofcakes" name="numberofcakes" id="numberofcakes">
+                        <option selected>Vælg antal cupcakes!</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+
+                    <!-- når man trykker på botten skal det plottes ind i ordre i mysql-->
+                    <button type="submit" style="margin-top: 100px" class="btn btn-success" data-value1="bottomCake"
+                            data-value2="topCake"
+                            data-value3="numberofcakes" value="cake">Tilføj til kurv
+                    </button>
+                </div>
+
+                <!-- this is meant to be the small area of the screen showing your curent order-->
+                <div class="col-5" style="background-color: mediumpurple">
+                    <h2>Din ordre</h2>
+                    <!-- ordre table i mysql skal bruges her-->
+                    <c:forEach var="cupcakesordre" items="${requestScope.ordrelist}">
+                        Cupcake
+                        <!--${cupcakesordre.bottomname} with ${cupcakesordre.topname}-->
+                        <div>
+                            <select class="form-select" aria-labelledby="changenumberofcakes"
+                                    name="changenumberofcakes" id="changenumberofcakes">
+                                <option selected> <!--BURDE VISE DET SAMME SOM BLEV VALGT FØRSTE GANG --></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-danger" value="remove">Fjern cupcake</button>
+                    </c:forEach>
+
+                    <fieldset style="margin-top: 50px">
+                        <legend style="font-weight: bold; font-size: 20px">Vælg betalingsmetode:</legend>
+
+                        <div>
+                            <input type="radio" id="pickup" name="paymentmethod" value="pickup"
+                                   checked>
+                            <label for="pickup">Betal ved afhentning</label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="kredit" name="paymentmethod" value="kredit">
+                            <label for="kredit">Betal med kredit</label>
+                        </div>
+                    </fieldset>
+
+                </div>
             </div>
         </div>
-
-
-        <!-- når man trykker på botten skal det plottes ind i ordre i mysql-->
-        <button type="submit" class="btn btn-success" data-value1="bottomCake" data-value2="topCake"
-                data-value3="numberofcakes" value="cake">Tilføj til kurv
-        </button>
-
-        <!-- this is meant to be the small area of the screen showing your curent order-->
-        <div class="container-sm">
-            <h2>Din ordre</h2>
-            <!-- ordre table i mysql skal bruges her-->
-            <c:forEach var="cupcakesordre" items="${requestScope.ordrelist}">
-                Cupcake
-                ${cupcakesordre.bottomname} with ${cupcakesordre.topname}
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <!-- ville gerne have det til at vise det valgte antal-->
-                            ${numberofcakes}
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <input type="number" name="numberofcakes" min="1" max="10">
-                    </div>
-                </div>
-                <button class="btn btn-danger" value="remove">Fjern cupcake</button>
-            </c:forEach>
-
-            <fieldset>
-                <legend>Vælg betalings methode:</legend>
-
-                <div>
-                    <input type="radio" id="pickup" name="paymentmethod" value="pickup"
-                           checked>
-                    <label for="pickup">Betal ved afhentning</label>
-                </div>
-
-                <div>
-                    <input type="radio" id="kredit" name="paymentmethod" value="kredit">
-                    <label for="kredit">Betal med kredit</label>
-                </div>
-            </fieldset>
-
-        </div>
-
 
     </jsp:body>
 

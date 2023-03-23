@@ -36,12 +36,12 @@ class BottomCakeMapper
                     bottomCake = new BottomCake(bottomId, name, price);
                 } else
                 {
-                    throw new DatabaseException("Wrong username or password");
+                    throw new DatabaseException("Something went wrong with getting the cupcakebottoms");
                 }
             }
         } catch (SQLException ex)
         {
-            throw new DatabaseException(ex, "Error logging in. Something went wrong with the database");
+            throw new DatabaseException(ex, "Something went wrong with the database");
         }
         return bottomCake;
     }
@@ -64,12 +64,12 @@ class BottomCakeMapper
                     bottomCakeList.add(new BottomCake(bottomId, name, price));
                 } else
                 {
-                    throw new DatabaseException("Wrong username or password");
+                    throw new DatabaseException("No cupcakesBottoms available");
                 }
             }
         } catch (SQLException ex)
         {
-            throw new DatabaseException(ex, "Error logging in. Something went wrong with the database");
+            throw new DatabaseException(ex, "Something went wrong with the database");
         }
         return bottomCakeList;
     }
