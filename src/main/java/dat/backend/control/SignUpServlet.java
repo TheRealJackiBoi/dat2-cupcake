@@ -25,13 +25,12 @@ public class SignUpServlet extends HttpServlet {
         response.setContentType("text/html");
         HttpSession session = request.getSession();
         session.setAttribute("user", null);
-        UserMapper um = new UserMapper();
         User user;
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        String role = "user";
+        int admin = 0;
         try{
-            user = UserMapper.createUser(email, password, role, connectionPool);
+            user = UserFacade.createUser(email, password, admin, connectionPool);
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         } catch (DatabaseException e) {
             e.printStackTrace();
