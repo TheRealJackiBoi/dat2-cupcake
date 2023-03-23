@@ -10,6 +10,7 @@ th, td {
     border: 1px solid silver;
     padding:15px;
 }
+
 .container{
     width: 100%;
     height: 100%;
@@ -19,24 +20,36 @@ th, td {
 .header {
     height: 200px;
     width: 2000px;
-    color: mediumpurple;
-    background-color: mediumpurple;
+    background-color: #BA45F1;
 }
 
-/* TODO: Add "Olsen Cupcakes" h3 to header next to cupcake image*/
-#OCheader {
-
-}
-
+/* Unique ID for the nav bar font NOT logged in */
 #navfont {
-    -webkit-text-stroke: 0.5px black;
-    color: aliceblue;
-    font-size: 25px;
+    color: #BA45F1;
+    font-size: 20px;
 }
 
+/* Unique ID for the nav bar font logged in */
+#navfontuser {
+    color: #BA45F1;
+    font-size: 20px;
+    float: left;
+}
+
+/* Custom object for the nav bar properties */
+.navbarstyle {
+    height: 35px;
+    width: 1280px;
+    background-color: #bfbdbd;
+    opacity: 70%;
+}
+
+/* Custom object for the nav bar text properties */
 .navbar-nav {
-    margin-top: -75px;
-    color: aliceblue;
+    margin-top: -7px;
+    color: #BA45F1;
+    float: right;
+
 }
 
 .img-fluid {
