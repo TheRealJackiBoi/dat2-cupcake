@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 @Disabled
 class UserMapperTest
 {
