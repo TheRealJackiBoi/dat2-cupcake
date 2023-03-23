@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-class UserMapper
+public class UserMapper
 {
     static User login(String username, String password, ConnectionPool connectionPool) throws DatabaseException
     {
@@ -40,7 +40,7 @@ class UserMapper
         return user;
     }
 
-    static User createUser(String username, String password, String role, ConnectionPool connectionPool) throws DatabaseException
+    public static User createUser(String username, String password, String role, ConnectionPool connectionPool) throws DatabaseException
     {
         Logger.getLogger("web").log(Level.INFO, "");
         User user;
