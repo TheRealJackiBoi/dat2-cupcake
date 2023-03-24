@@ -4,16 +4,17 @@
 <%@page errorPage="error.jsp" isErrorPage="false" %>
 
 <t:pagetemplate>
-    <jsp:attribute name="header">
-         Welcome to the frontpage
-    </jsp:attribute>
 
+        <jsp:attribute name="header">
+            Olsker Cupcakes
+    </jsp:attribute>
     <jsp:attribute name="footer">
-        Welcome to the frontpage
+
     </jsp:attribute>
 
     <jsp:body>
 
+        <img src="${pageContext.request.contextPath}/images/indexpic.png" width="500px" height="500px" class="img-fluid"/>
         <p>Startcode for 2nd semester </p>
 
         <c:if test="${sessionScope.user != null}">
