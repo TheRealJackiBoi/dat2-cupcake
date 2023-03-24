@@ -74,5 +74,34 @@ class BottomCakeMapper
         return bottomCakeList;
     }
 
+    static float getBottomPrice(int bottomId, ConnectionPool connectionPool) throws DatabaseException
+    {
+        Logger.getLogger("web").log(Level.INFO, "");
+
+        float price;
+
+        String sql = "SELECT price FROM bottom WHERE bottom_id = ?";
+
+        try (Connection connection = connectionPool.getConnection())
+        {
+            try (PreparedStatement ps = connection.prepareStatement(sql))
+            {
+                ps.setInt(1, bottomId);
+
+                ResultSet rs = ps.executeQuery();
+                if (rs.next())
+                {
+                    price = rs.getFloat("price");
+                } else
+                {
+                    throw new DatabaseException("Something went wrong with getting the cupcakebottom price");
+                }
+            }
+        } catch (SQLException ex)
+        {
+            throw new DatabaseException(ex, "Something went wrong with the database");
+        }
+        return price;
+    }
 
 }

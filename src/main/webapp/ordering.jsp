@@ -5,7 +5,7 @@
 
 <t:pagetemplate>
     <jsp:attribute name="header">
-         Vi er klar til at tage din bestilling
+         Bestilling
     </jsp:attribute>
 
     <jsp:attribute name="footer">
@@ -13,6 +13,7 @@
     </jsp:attribute>
 
     <jsp:body>
+        <h1>Vi er klar til din bestilling</h1>
         <div class="container">
             <div class="row">
                 <!--this is showing the bottomlist-->
@@ -33,7 +34,7 @@
                     <p>Vælg din topping!</p>
                     <c:forEach var="cupcaketop" items="${requestScope.topCakeList}">
                         <div class="form-check">
-                            <input type="radio" id="cupcaketop" name="topCake" value="${cupcaketop.topId}">
+                            <input type="radio" id="cupcaketop" name="topcake" value="${cupcaketop.topId}">
                             <label class="form-check-label" for="cupcaketop">${cupcaketop.name}
                                 til ${cupcaketop.price}</label>
                         </div>
@@ -56,7 +57,7 @@
                     </select>
 
                     <!-- når man trykker på botten skal det plottes ind i ordre i mysql-->
-                    <button type="submit" style="margin-top: 100px" class="btn btn-success" data-value1="bottomCake"
+                    <button formaction="ordering" style="margin-top: 100px" class="btn btn-success" data-value1="bottomCake"
                             data-value2="topCake"
                             data-value3="numberofcakes" value="cake">Tilføj til kurv
                     </button>

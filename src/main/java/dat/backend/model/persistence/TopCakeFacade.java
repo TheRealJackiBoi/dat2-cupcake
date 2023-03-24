@@ -1,6 +1,5 @@
 package dat.backend.model.persistence;
 
-import dat.backend.model.entities.BottomCake;
 import dat.backend.model.entities.TopCake;
 import dat.backend.model.exceptions.DatabaseException;
 
@@ -16,5 +15,9 @@ public class TopCakeFacade
     public static List<TopCake> getAllTops(ConnectionPool connectionPool) throws DatabaseException
     {
         return TopCakeMapper.getAllTops(connectionPool);
+    }
+
+    public static float getTopPrice(int cupcakeTop, ConnectionPool connectionPool) throws DatabaseException {
+        return TopCakeMapper.getTopPrice(cupcakeTop, connectionPool);
     }
 }
