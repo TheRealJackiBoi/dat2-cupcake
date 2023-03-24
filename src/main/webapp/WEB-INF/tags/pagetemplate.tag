@@ -22,7 +22,7 @@
         <div class="container">
             <a class="navbar-brand" href="index.jsp">
                 <div class ="header" style="text-align: center;">
-                <img src="${pageContext.request.contextPath}/images/cupcake3.png" width="700px" class="img-fluid"/>
+                    <img src="${pageContext.request.contextPath}/images/cupcake3.png" width="700px" class="img-fluid"/>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,20 +30,20 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                 <div class="navbarstyle">
-                   <div class="navbar-nav">
+                    <div class="navbar-nav">
 
-                       <!-- TODO: Split up the 4 buttons with 2 on each side -->
+                        <!-- TODO: Split up the 4 buttons with 2 on each side -->
 
-                    <c:if test="${sessionScope.user == null }">
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp" id="navfontright">Login</a>
-                    </c:if>
-                    <c:if test="${sessionScope.user != null }">
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/" id="navfontleft">Se ordrer</a>
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/ordering" id="navfontleft">Bestil cupcakes</a>
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/" id="navfontright">${sessionScope.user.username} ${sessionScope.user.balance}DKK</a>
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout" id="navfontright">Log out</a>
-                    </c:if>
-                  </div>
+                        <c:if test="${sessionScope.user == null }">
+                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp" id="navfontright">Login</a>
+                        </c:if>
+                        <c:if test="${sessionScope.user != null }">
+                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/" id="navfontleft">Se ordrer</a>
+                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/ordering" id="navfontleft">Bestil cupcakes</a>
+                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/" id="navfontright">${sessionScope.user.username} ${sessionScope.user.balance}DKK</a>
+                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout" id="navfontright">Log out</a>
+                        </c:if>
+                    </div>
                 </div>
             </div>
         </div>
