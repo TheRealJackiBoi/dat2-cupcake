@@ -31,17 +31,17 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                 <div class="navbarstyle">
                    <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/" id="navfont">Se ordrer</a>
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/" id="navfont">???</a>
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/" id="navfont">[Balance+Email]</a>
+
+                       <!-- TODO: Split up the 4 buttons with 2 on each side -->
+
                     <c:if test="${sessionScope.user == null }">
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp" id="navfont">Login</a>
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp" id="navfontright">Login</a>
                     </c:if>
                     <c:if test="${sessionScope.user != null }">
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/" id="navfontuser">Se ordrer</a>
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/" id="navfontuser">???</a>
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/" id="navfont">[Balance+Email]</a>
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout" id="navfont">Log out</a>
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/" id="navfontleft">Se ordrer</a>
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/" id="navfontleft">Bestil cupcakes</a>
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/" id="navfontright">${sessionScope.user.username} ${sessionScope.user.balance}DKK</a>
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout" id="navfontright">Log out</a>
                     </c:if>
                   </div>
                 </div>

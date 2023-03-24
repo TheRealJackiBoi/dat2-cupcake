@@ -6,6 +6,10 @@ table {
     padding:15px;
 }
 
+div {
+    padding-bottom: 20px;
+}
+
 th, td {
     border: 1px solid silver;
     padding:15px;
@@ -24,13 +28,14 @@ th, td {
 }
 
 /* Unique ID for the nav bar font NOT logged in */
-#navfont {
+#navfontright {
     color: #BA45F1;
     font-size: 20px;
+    float: right;
 }
 
 /* Unique ID for the nav bar font logged in */
-#navfontuser {
+#navfontleft {
     color: #BA45F1;
     font-size: 20px;
     float: left;
@@ -46,12 +51,7 @@ th, td {
 
 /* Custom object for the nav bar text properties */
 .navbar-nav {
-    margin-top: -7px;
+    line-height: 20px;
     color: #BA45F1;
-    float: right;
 
-}
-
-.img-fluid {
-    margin-top: -10px;
 }
