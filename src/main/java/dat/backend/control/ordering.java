@@ -19,44 +19,42 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "Ordering", urlPatterns = {"/ordering"} )
-public class ordering extends HttpServlet
-{
+@WebServlet(name = "Ordering", urlPatterns = {"/ordering"})
+public class ordering extends HttpServlet {
     private ConnectionPool connectionPool;
 
     @Override
-    public void init() throws ServletException
-    {
+    public void init() throws ServletException {
         this.connectionPool = ApplicationStart.getConnectionPool();
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
-    {
-
-    }
-
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
-    {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         //sikre at brugeren er logget ind
         HttpSession session = request.getSession();
 
         User user = (User) session.getAttribute("user"); // adding user to session scope
-        try
-        {
+        //testing if the user is loggin in
+        /*if(user == null){
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        } else { */
+        try {
             List<BottomCake> bottomCakeList = BottomCakeFacade.getAllBottoms(connectionPool);
             List<TopCake> topCakeList = TopCakeFacade.getAllTops(connectionPool);
 
-            request.setAttribute("bottomList", bottomCakeList);
-            request.setAttribute("topList", topCakeList);
+            request.setAttribute("bottomCakeList", bottomCakeList);
+            request.setAttribute("topCakeList", topCakeList);
 
             //send tilbage til sin egen side når mna klikker
             request.getRequestDispatcher("WEB-INF/ordering.jsp").forward(request, response);
-        }
-        catch (DatabaseException e)
-        {
+        } catch (DatabaseException e) {
             request.setAttribute("errormessage", e.getMessage());
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
+        //}
+    }
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
     }
 
 }

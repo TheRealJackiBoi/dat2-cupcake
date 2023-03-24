@@ -36,12 +36,12 @@ class TopCakeMapper
                     topCake = new TopCake(topId, name, price);
                 } else
                 {
-                    throw new DatabaseException("Wrong username or password");
+                    throw new DatabaseException("Something went wrong with getting toppings");
                 }
             }
         } catch (SQLException ex)
         {
-            throw new DatabaseException(ex, "Error logging in. Something went wrong with the database");
+            throw new DatabaseException(ex, "Something went wrong with the database");
         }
         return topCake;
     }
@@ -64,12 +64,12 @@ class TopCakeMapper
                     topCakeList.add(new TopCake(topId, name, price));
                 } else
                 {
-                    throw new DatabaseException("Wrong username or password");
+                    throw new DatabaseException("No toppings available");
                 }
             }
         } catch (SQLException ex)
         {
-            throw new DatabaseException(ex, "Error logging in. Something went wrong with the database");
+            throw new DatabaseException(ex, "Something went wrong with the database");
         }
         return topCakeList;
     }
