@@ -19,11 +19,11 @@
 
         <form action="login" method="post">
             <label for="username">Username: </label>
-            <input type="text" id="username" name="username"/>
+            <input type="email" id="username" name="email"/>
             <label for="password">Password: </label>
             <input type="password" id="password" name="password"/>
             <input type="submit"  value="Log in"/>
         </form>
-
+        <a href="signUpPage.jsp">Opret Bruger</a>
     </jsp:body>
 </t:pagetemplate>
