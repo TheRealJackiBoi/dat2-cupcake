@@ -39,7 +39,7 @@
                     </c:if>
                     <c:if test="${sessionScope.user != null }">
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/" id="navfontleft">Se ordrer</a>
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/" id="navfontleft">Bestil cupcakes</a>
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/ordering" id="navfontleft">Bestil cupcakes</a>
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/" id="navfontright">${sessionScope.user.username} ${sessionScope.user.balance}DKK</a>
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout" id="navfontright">Log out</a>
                     </c:if>
@@ -63,8 +63,6 @@
             3770 Olsker
         </div>
         <div class="col">
-            Cupcake projekt 2. sem
-            <p>&copy; 2023 Cphbusiness</p>
         </div>
         <div class="col">
             De bedste cupcakes på Bornholm!<br/>

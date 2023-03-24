@@ -3,16 +3,10 @@
 table {
     border-collapse: collapse;
     border: 1px solid silver;
-    padding:15px;
-}
-
-div {
-    padding-bottom: 20px;
 }
 
 th, td {
     border: 1px solid silver;
-    padding:15px;
 }
 
 .container{
