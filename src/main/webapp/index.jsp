@@ -12,19 +12,22 @@
 
     </jsp:attribute>
 
+    <!-- TODO: Set image left-side and wrap text right-side + add proper index info -->
     <jsp:body>
-
-        <img src="${pageContext.request.contextPath}/images/indexpic.png" width="500px" height="500px" class="img-fluid"/>
-        <p>Startcode for 2nd semester </p>
-
-        <c:if test="${sessionScope.user != null}">
+        <div style="text-align: left;">
+        <img src="${pageContext.request.contextPath}/images/cupcake4.png"
+             width="500px" height="500px" class="img-fluid" alt="cupcake"/>
+        </div>
+        <div>
+         <c:if test="${sessionScope.user != null}">
             <p>You are logged in with the role of "${sessionScope.user.role}".</p>
-        </c:if>
+         </c:if>
 
-        <c:if test="${sessionScope.user == null}">
+         <c:if test="${sessionScope.user == null}">
             <p>You are not logged in yet. You can do it here: <a
                     href="login.jsp">Login</a></p>
-        </c:if>
+         </c:if>
+        </div>
 
     </jsp:body>
 
