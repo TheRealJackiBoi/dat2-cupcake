@@ -25,19 +25,19 @@ th, td {
 .header {
     height: 200px;
     width: 2000px;
-    background-color: #BA45F1;
+    background-color: #CDB0EE;
 }
 
 /* Unique ID for the nav bar font NOT logged in */
 #navfontright {
-    color: #BA45F1;
+    color: #CDB0EE;
     font-size: 20px;
     float: right;
 }
 
 /* Unique ID for the nav bar font logged in */
 #navfontleft {
-    color: #BA45F1;
+    color: #CDB0EE;
     font-size: 20px;
     float: left;
 }
@@ -53,6 +53,5 @@ th, td {
 /* Custom object for the nav bar text properties */
 .navbar-nav {
     line-height: 20px;
-    color: #BA45F1;
-
+    color: #CDB0EE;
 }
