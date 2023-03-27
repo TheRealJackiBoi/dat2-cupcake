@@ -17,4 +17,8 @@ public class BottomCakeFacade
     {
         return BottomCakeMapper.getAllBottoms(connectionPool);
     }
+
+    public static float getBottomPrice(int bottomId, ConnectionPool connectionPool) throws DatabaseException {
+        return BottomCakeMapper.getBottomPrice(bottomId, connectionPool);
+    }
 }
