@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 
 class TopCakeMapper
 {
+
     static TopCake getTop(int topId, ConnectionPool connectionPool) throws DatabaseException
     {
         Logger.getLogger("web").log(Level.INFO, "");
@@ -72,6 +73,36 @@ class TopCakeMapper
             throw new DatabaseException(ex, "Something went wrong with the database");
         }
         return topCakeList;
+    }
+
+    static Float getTopPrice(int topId, ConnectionPool connectionPool) throws DatabaseException
+    {
+        Logger.getLogger("web").log(Level.INFO, "");
+
+        float price;
+
+        String sql = "SELECT price FROM top WHERE top_id = ?";
+
+        try (Connection connection = connectionPool.getConnection())
+        {
+            try (PreparedStatement ps = connection.prepareStatement(sql))
+            {
+                ps.setInt(1, topId);
+
+                ResultSet rs = ps.executeQuery();
+                if (rs.next())
+                {
+                    price = rs.getFloat("price");
+                } else
+                {
+                    throw new DatabaseException("Something went wrong with getting toppings price");
+                }
+            }
+        } catch (SQLException ex)
+        {
+            throw new DatabaseException(ex, "Something went wrong with the database");
+        }
+        return price;
     }
 
 
