@@ -1,0 +1,36 @@
+.containerbody {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+img {
+    max-width: 100%;
+}
+
+.image {
+    flex-basis: 40%;
+}
+
+.text {
+    font-size: 16px;
+    padding-left: 20px;
+    text-align: right;
+}
+
+.indexbutton {
+    background-color: white;
+    color: black;
+    border: 2px solid #CDB0EE;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    transition-duration: 0.3s;
+}
+
+.indexbutton:hover {
+    background-color: #CDB0EE;
+    color: white;
+}
