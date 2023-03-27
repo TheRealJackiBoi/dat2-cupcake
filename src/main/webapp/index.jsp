@@ -14,12 +14,13 @@
     <jsp:attribute name="footer">
 
     </jsp:attribute>
-
     <jsp:body>
         <div class="containerbody">
             <div class="image">
             <img src="${pageContext.request.contextPath}/images/cupcake8.png"
                  class="img-fluid" alt="cupcake8.png"/>
+                <img src="${pageContext.request.contextPath}/images/cupcake7.png"
+                     class="img-fluid" alt="cupcake8.png"/>
                 <div class="text">
                     <h3>Lækker sulten? Kig ind</h3>
                     <button class="indexbutton" onclick="window.location.href='http://localhost:8080/Cupcake/ordering';">Bestil cupcakes</button>
