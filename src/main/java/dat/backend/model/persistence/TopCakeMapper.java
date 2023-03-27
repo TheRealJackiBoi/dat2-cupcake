@@ -57,15 +57,12 @@ class TopCakeMapper
             try (PreparedStatement ps = connection.prepareStatement(sql))
             {
                 ResultSet rs = ps.executeQuery();
-                if (rs.next())
+                while (rs.next())
                 {
-                    int topId = rs.getInt("bottom_id");
+                    int topId = rs.getInt("top_id");
                     String name = rs.getString("name");
                     float price = rs.getFloat("price");
                     topCakeList.add(new TopCake(topId, name, price));
-                } else
-                {
-                    throw new DatabaseException("No toppings available");
                 }
             }
         } catch (SQLException ex)

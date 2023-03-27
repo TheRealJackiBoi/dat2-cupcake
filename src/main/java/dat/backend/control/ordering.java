@@ -42,7 +42,7 @@ public class ordering extends HttpServlet {
             request.setAttribute("topCakeList", topCakeList);
 
             //send tilbage til sin egen side når mna klikker
-            request.getRequestDispatcher("WEB-INF/ordering.jsp").forward(request, response);
+            request.getRequestDispatcher("ordering.jsp").forward(request, response);
         } catch (DatabaseException e) {
             request.setAttribute("errormessage", e.getMessage());
             request.getRequestDispatcher("error.jsp").forward(request, response);
@@ -67,7 +67,7 @@ public class ordering extends HttpServlet {
 
             List<CupCake> cupCakeList = CupCakeFacade.getCakesByOrderId(newOrderId,connectionPool);
             request.setAttribute("cupCakeList", cupCakeList);
-            request.getRequestDispatcher("WEB-INF/ordering.jsp").forward(request,response);
+            request.getRequestDispatcher("ordering.jsp").forward(request,response);
 
         } catch (DatabaseException e) {
             request.setAttribute("errormessage", e.getMessage());

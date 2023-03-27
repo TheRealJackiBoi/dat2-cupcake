@@ -56,15 +56,12 @@ class BottomCakeMapper
             try (PreparedStatement ps = connection.prepareStatement(sql))
             {
                 ResultSet rs = ps.executeQuery();
-                if (rs.next())
+                while (rs.next())
                 {
                     int bottomId = rs.getInt("bottom_id");
                     String name = rs.getString("name");
                     float price = rs.getFloat("price");
                     bottomCakeList.add(new BottomCake(bottomId, name, price));
-                } else
-                {
-                    throw new DatabaseException("No cupcakesBottoms available");
                 }
             }
         } catch (SQLException ex)
