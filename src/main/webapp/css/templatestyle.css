@@ -46,8 +46,7 @@ th, td {
 .navbarstyle {
     height: 35px;
     width: 1280px;
-    background-color: #bfbdbd;
-    opacity: 10%;
+    background-color: #dedcdc;
 }
 
 /* Custom object for the nav bar text properties */
