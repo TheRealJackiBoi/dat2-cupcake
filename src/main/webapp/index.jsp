@@ -14,7 +14,7 @@
     <jsp:attribute name="footer">
 
     </jsp:attribute>
-o
+
     <jsp:body>
         <div class="containerbody">
             <div class="image">
