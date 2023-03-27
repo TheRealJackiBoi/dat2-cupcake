@@ -34,23 +34,23 @@ public class ordering extends HttpServlet {
 
         User user = (User) session.getAttribute("user"); // adding user to session scope
         //testing if the user is loggin in
-        /*if(user == null){
+        if(user == null){
             request.getRequestDispatcher("index.jsp").forward(request, response);
-        } else { */
-        try {
-            List<BottomCake> bottomCakeList = BottomCakeFacade.getAllBottoms(connectionPool);
-            List<TopCake> topCakeList = TopCakeFacade.getAllTops(connectionPool);
+        } else {
+            try {
+                List<BottomCake> bottomCakeList = BottomCakeFacade.getAllBottoms(connectionPool);
+                List<TopCake> topCakeList = TopCakeFacade.getAllTops(connectionPool);
 
-            request.setAttribute("bottomCakeList", bottomCakeList);
-            request.setAttribute("topCakeList", topCakeList);
+                request.setAttribute("bottomCakeList", bottomCakeList);
+                request.setAttribute("topCakeList", topCakeList);
 
-            //send tilbage til sin egen side når mna klikker
-            request.getRequestDispatcher("WEB-INF/ordering.jsp").forward(request, response);
-        } catch (DatabaseException e) {
-            request.setAttribute("errormessage", e.getMessage());
-            request.getRequestDispatcher("error.jsp").forward(request, response);
+                //send tilbage til sin egen side når mna klikker
+                request.getRequestDispatcher("WEB-INF/ordering.jsp").forward(request, response);
+            } catch (DatabaseException e) {
+                request.setAttribute("errormessage", e.getMessage());
+                request.getRequestDispatcher("error.jsp").forward(request, response);
+            }
         }
-        //}
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

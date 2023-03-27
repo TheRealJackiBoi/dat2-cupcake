@@ -5,7 +5,7 @@
 
 <t:pagetemplate>
     <jsp:attribute name="header">
-         Vi er klar til at tage din bestilling
+         Bestilling
     </jsp:attribute>
 
     <jsp:attribute name="footer">
@@ -13,6 +13,8 @@
     </jsp:attribute>
 
     <jsp:body>
+
+        <h1>Vi er klar til din bestilling</h1>
         <div class="container">
             <div class="row">
                 <!--this is showing the bottomlist-->
