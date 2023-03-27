@@ -8,7 +8,7 @@
       <jdbc-url>jdbc:mysql://localhost:3306/startcode</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="cudia_dk_db_cupcake@mysql24.unoeuro.com" uuid="49dca2b8-385c-43b3-b864-9ad977f0a580">
+    <data-source source="LOCAL" name="Cupcake Sql" uuid="e2c13ffd-5ecf-43ae-806c-c75fbdb38026">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>

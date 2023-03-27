@@ -22,4 +22,12 @@ public class CupCakeFacade
     {
         return CupCakeMapper.getAllCakes(connectionPool);
     }
+
+    public static float calculatePrice(int cupcakeBottom, int cupcakeTop, int numberOfCakes, ConnectionPool connectionPool) throws DatabaseException{
+        return CupCakeMapper.calculatePrice(cupcakeBottom, cupcakeTop, numberOfCakes, connectionPool);
+    }
+
+    public static int addCupCake(int numberOfCakes, int newOrderId, int cupcakeBottom, int cupcakeTop, float price, ConnectionPool connectionPool) throws DatabaseException {
+        return CupCakeMapper.addCupCake(numberOfCakes, newOrderId, cupcakeBottom, cupcakeTop, price, connectionPool);
+    }
 }
