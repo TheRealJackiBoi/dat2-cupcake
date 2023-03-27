@@ -5,13 +5,13 @@ import dat.backend.model.exceptions.DatabaseException;
 
 public class UserFacade
 {
-    public static User login(String username, String password, ConnectionPool connectionPool) throws DatabaseException
+    public static User login(String email, String password, ConnectionPool connectionPool) throws DatabaseException
     {
-        return UserMapper.login(username, password, connectionPool);
+        return UserMapper.login(email, password, connectionPool);
     }
 
-    public static User createUser(String username, String password, String role, ConnectionPool connectionPool) throws DatabaseException
+    public static User createUser(String email, String password, int admin, ConnectionPool connectionPool) throws DatabaseException
     {
-        return UserMapper.createUser(username, password, role, connectionPool);
+        return UserMapper.createUser(email, password, admin, connectionPool);
     }
 }

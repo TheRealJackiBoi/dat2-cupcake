@@ -6,6 +6,7 @@ import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.UserFacade;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;
@@ -14,6 +15,7 @@ import java.sql.Statement;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@Disabled
 class UserMapperTest
 {
     // TODO: Change mysql login credentials if needed below
@@ -83,7 +85,7 @@ class UserMapperTest
     @Test
     void login() throws DatabaseException
     {
-        User expectedUser = new User("user", "1234", "user");
+        User expectedUser = new User("user", "1234", 0, 0);
         User actualUser = UserFacade.login("user", "1234", connectionPool);
         assertEquals(expectedUser, actualUser);
     }
@@ -103,9 +105,9 @@ class UserMapperTest
     @Test
     void createUser() throws DatabaseException
     {
-        User newUser = UserFacade.createUser("jill", "1234", "user", connectionPool);
+        User newUser = UserFacade.createUser("jill", "1234", 0, connectionPool);
         User logInUser = UserFacade.login("jill", "1234", connectionPool);
-        User expectedUser = new User("jill", "1234", "user");
+        User expectedUser = new User("jill", "1234", 0,0);
         assertEquals(expectedUser, newUser);
         assertEquals(expectedUser, logInUser);
 

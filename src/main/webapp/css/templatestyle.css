@@ -1,0 +1,58 @@
+/* CSS stylesheet  for application */
+
+table {
+    border-collapse: collapse;
+    border: 1px solid silver;
+    padding:15px;
+}
+
+div {
+    padding-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid silver;
+    padding:15px;
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    margin-bottom: 30px;
+}
+
+.header {
+    height: 200px;
+    width: 2000px;
+    background-color: #BA45F1;
+}
+
+/* Unique ID for the nav bar font NOT logged in */
+#navfontright {
+    color: #BA45F1;
+    font-size: 20px;
+    float: right;
+}
+
+/* Unique ID for the nav bar font logged in */
+#navfontleft {
+    color: #BA45F1;
+    font-size: 20px;
+    float: left;
+}
+
+/* Custom object for the nav bar properties */
+.navbarstyle {
+    height: 35px;
+    width: 1280px;
+    background-color: #bfbdbd;
+    opacity: 70%;
+}
+
+/* Custom object for the nav bar text properties */
+.navbar-nav {
+    line-height: 20px;
+    color: #BA45F1;
+
+}

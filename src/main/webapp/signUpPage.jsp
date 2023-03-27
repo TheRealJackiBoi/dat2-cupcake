@@ -11,7 +11,7 @@
   <jsp:body>
 
     <div class="container">
-      <form action="signUpPage.jsp" name="signUpPage"><br>
+      <form action="signUpPage" name="signUpPage" method="POST"><br>
         <label for="email">Enter New Email:</label><br>
         <input type="text" id="email" name="email"><br>
 
