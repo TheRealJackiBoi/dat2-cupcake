@@ -29,21 +29,23 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-                <div class="navbarstyle">
-                    <div class="navbar-nav">
+                <div class="navbarstyle d-flex">
+
 
                         <!-- TODO: Split up the 4 buttons with 2 on each side -->
-
+                        <!-- if not logged in-->
                         <c:if test="${sessionScope.user == null }">
-                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp" id="navfontright">Login</a>
+                            <a class="nav-item nav-link text-light navfontright" href="${pageContext.request.contextPath}/login.jsp" id="">Login</a>
                         </c:if>
+
+                        <!-- if logged in-->
                         <c:if test="${sessionScope.user != null }">
-                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/" id="navfontleft">Se ordrer</a>
-                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/ordering" id="navfontleft">Bestil cupcakes</a>
-                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/" id="navfontright">${sessionScope.user.username} ${sessionScope.user.balance}DKK</a>
-                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout" id="navfontright">Log out</a>
-                        </c:if>
-                    </div>
+                            <a class="nav-item nav-link text-light navfontleft" href="${pageContext.request.contextPath}/orders" id="">Se ordrer</a>
+                            <a class="nav-item nav-link text-light navfontleft" href="${pageContext.request.contextPath}/ordering" id="">Bestil cupcakes</a>
+
+                            <a class=" nav-item nav-link text-light text-light float-right navfontright" href="${pageContext.request.contextPath}/WEB-INF/welcome.jsp" id="navfontright-user">${sessionScope.user.username} ${sessionScope.user.balance}DKK</a>
+                            <a class="nav-item nav-link float-right text-light navfontright" href="${pageContext.request.contextPath}/logout" id="navfontright-logout">Log out</a>
+                                </c:if>
                 </div>
             </div>
         </div>

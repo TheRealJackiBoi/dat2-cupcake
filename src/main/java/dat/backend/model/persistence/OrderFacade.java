@@ -30,4 +30,8 @@ public class OrderFacade
     public static void togglePayment(int orderId, ConnectionPool connectionPool) throws DatabaseException{
         OrderMapper.togglePayed(orderId, connectionPool);
     }
+
+    public static float calculateTotalPrice(int orderId, ConnectionPool connectionPool) throws DatabaseException{
+        return OrderMapper.calculateTotalPrice(orderId, connectionPool);
+    }
 }
