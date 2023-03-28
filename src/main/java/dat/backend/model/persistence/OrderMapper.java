@@ -134,5 +134,19 @@ class OrderMapper {
         }
     }
 
+    static float calculateTotalPrice(int orderId, ConnectionPool connectionPool) throws DatabaseException {
+        List<CupCake> cupCakes;
 
+        cupCakes = CupCakeFacade.getCakesByOrderId(orderId, connectionPool);
+
+
+        float totalPrice = 0;
+
+        for (CupCake c :
+                cupCakes) {
+            totalPrice += c.getPrice();
+        }
+
+        return totalPrice;
+    }
 }
