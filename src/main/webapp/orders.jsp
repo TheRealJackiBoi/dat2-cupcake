@@ -24,7 +24,7 @@
                 <c:forEach var="order" items="requestScope.userOrders" varStatus="loop">
                     <tr>
                         <td>${order.getOrderId()}</td>
-                        <td>${requestScope.userOrdersPrice.get(loop.index)}</td>
+                       <!-- <td>${requestScope.userOrdersPrice.get(loop.index)}</td> -->
                         <td><button></button></td>
                     </tr>
                 </c:forEach>

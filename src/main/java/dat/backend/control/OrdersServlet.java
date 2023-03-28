@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "OrdersServlet", value = "/Orders")
+@WebServlet(name = "OrdersServlet", value = "/orders")
 public class OrdersServlet extends HttpServlet {
     private ConnectionPool connectionPool;
 
@@ -43,7 +43,7 @@ public class OrdersServlet extends HttpServlet {
         List<Float> ordersTotalPrice = new ArrayList<>();
         if (user.getAdmin() == 1) {
 
-        } else {
+        }
             try {
                 orders = OrderFacade.getOrdersByUserEmail(user.getUsername(), connectionPool);
 
@@ -59,7 +59,7 @@ public class OrdersServlet extends HttpServlet {
                 request.setAttribute("errormessage", e.getMessage());
                 request.getRequestDispatcher("error.jsp").forward(request, response);
             }
-        }
+
     }
 
     @Override

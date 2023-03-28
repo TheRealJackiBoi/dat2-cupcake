@@ -40,7 +40,7 @@
 
                         <!-- if logged in-->
                         <c:if test="${sessionScope.user != null }">
-                            <a class="nav-item nav-link text-dark navfontleft" href="${pageContext.request.contextPath}/Orders" id="">Se ordrer</a>
+                            <a class="nav-item nav-link text-dark navfontleft" href="${pageContext.request.contextPath}/orders" id="">Se ordrer</a>
                             <a class="nav-item nav-link text-dark navfontleft" href="${pageContext.request.contextPath}/ordering" id="">Bestil cupcakes</a>
 
                             <a class=" nav-item nav-link text-light text-dark float-right navfontright" href="${pageContext.request.contextPath}/WEB-INF/welcome.jsp" id="navfontright-user">${sessionScope.user.username} ${sessionScope.user.balance}DKK</a>
