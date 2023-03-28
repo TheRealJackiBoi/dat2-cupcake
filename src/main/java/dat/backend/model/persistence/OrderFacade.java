@@ -23,8 +23,8 @@ public class OrderFacade
         return OrderMapper.getAllOrders(connectionPool);
     }
 
-    public static int addOrder(User user, String userEmail, ConnectionPool connectionPool) throws DatabaseException {
-        return OrderMapper.addOrder(user, userEmail, connectionPool);
+    public static int addOrder(String userEmail, ConnectionPool connectionPool) throws DatabaseException {
+        return OrderMapper.addOrder(userEmail, connectionPool);
     }
 
     public static void togglePayment(int orderId, ConnectionPool connectionPool) throws DatabaseException{
