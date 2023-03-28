@@ -42,17 +42,16 @@ public class OrderConfirmationServlet extends HttpServlet {
 
         try {
             cupCakeList = cupCakeFacade.getCakesByOrderId(cupCake.getOrderId(), connectionPool);
-            float price1 = 0;
+            float price = CupCakeFacade.calculatePrice(cupcakeBottom, cupcakeTop, numberOfCakes, connectionPool);
             CupCake tempCupCake = new CupCake(BottomCakeFacade.getBottom(cupcakeBottom, connectionPool),
-                    TopCakeFacade.getTop(cupcakeTop, connectionPool), numberOfCakes, price1);
+                    TopCakeFacade.getTop(cupcakeTop, connectionPool), numberOfCakes, price);
             List<CupCake> currentOrder = new ArrayList<>();
             List<Float> currentOrderPriceList = new ArrayList<>();
             currentOrder.add(tempCupCake);
 
             for (int i = 0; i <= currentOrder.size(); i++){
-                currentOrder.get(i);
-                float price = CupCakeFacade.calculatePrice(cupcakeBottom, cupcakeTop, numberOfCakes, connectionPool);
-                currentOrderPriceList.add(price);
+               float cp = currentOrder.get(i).getPrice();
+                currentOrderPriceList.add(cp);
             }
             int sum = 0;
 
