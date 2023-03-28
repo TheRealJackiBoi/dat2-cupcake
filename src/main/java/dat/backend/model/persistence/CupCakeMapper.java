@@ -56,7 +56,7 @@ class CupCakeMapper {
                 ps.setInt(1, orderId);
 
                 ResultSet rs = ps.executeQuery();
-                if (rs.next()) {
+                while (rs.next()) {
                     int cupcakeId = rs.getInt("cupcake_id");
                     int quantity = rs.getInt("quantity");
 
@@ -65,8 +65,6 @@ class CupCakeMapper {
                     float price = rs.getFloat("price");
                     cupCake = new CupCake(cupcakeId, quantity, orderId, bottomId, topId, price);
                     cupCakeList.add(cupCake);
-                } else {
-                    throw new DatabaseException("no cakes available");
                 }
             }
         } catch (SQLException ex) {

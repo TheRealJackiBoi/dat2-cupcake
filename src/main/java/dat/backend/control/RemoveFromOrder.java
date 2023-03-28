@@ -25,9 +25,9 @@ public class RemoveFromOrder extends HttpServlet {
 
         try {
             int removeCupCake = CupCakeFacade.removeCupCake(cupcakeId, connectionPool);
-            //would be best if it had a check to see if there were ==1 lines affected by this update
+            //checks that only 1 line was affected by the delete
             if(removeCupCake == 1) {
-                //virker "delvist" fjerne hele ordren, men beholder at man skal betale 35kr for nul, derudover fjerner det ikke noget fra SQL
+                //redirects back to ordering servlet to print out all the cupcakes again
                 response.sendRedirect("ordering");
             }
             else {
