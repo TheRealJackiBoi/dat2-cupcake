@@ -30,4 +30,8 @@ public class CupCakeFacade
     public static int addCupCake(int numberOfCakes, int newOrderId, int cupcakeBottom, int cupcakeTop, float price, ConnectionPool connectionPool) throws DatabaseException {
         return CupCakeMapper.addCupCake(numberOfCakes, newOrderId, cupcakeBottom, cupcakeTop, price, connectionPool);
     }
+
+    public static int removeCupCake(int cupcakeId, ConnectionPool connectionPool) throws DatabaseException {
+        return CupCakeMapper.removeCupCake(cupcakeId, connectionPool);
+    }
 }

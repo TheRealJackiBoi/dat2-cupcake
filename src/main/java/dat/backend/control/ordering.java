@@ -54,10 +54,11 @@ public class ordering extends HttpServlet {
                         TopCake topCake = o.getTopCake();
                         int amount = o.getAmount();
                         float price = o.getPrice();
-                        CupCake tempCupcake = new CupCake(bottomCake, topCake, amount, price);
+                        int cupcakeId = o.getCupCakeId();
+                        CupCake tempCupcake = new CupCake(bottomCake, topCake, amount, price, cupcakeId);
                         currentOrderList.add(tempCupcake);
                     }
-                    request.setAttribute("currentOrderList", currentOrderList);
+                    session.setAttribute("currentOrderList", currentOrderList);
                 }
                 //send tilbage til sin egen side når mna klikker
                 request.getRequestDispatcher("ordering.jsp").forward(request, response);
@@ -96,12 +97,16 @@ public class ordering extends HttpServlet {
             List<CupCake> orderList = CupCakeFacade.getCakesByOrderId(orderId, connectionPool);
 
             //prøver at løse at jeg kun kan få vist id for top og bottom af hver kage
-            CupCake tempCupCake = new CupCake(BottomCakeFacade.getBottom(cupcakeBottom,connectionPool),TopCakeFacade.getTop(cupcakeTop, connectionPool), numberOfCakes,price);
+            CupCake tempCupCake = new CupCake(BottomCakeFacade.getBottom(cupcakeBottom,connectionPool),
+                    TopCakeFacade.getTop(cupcakeTop, connectionPool), numberOfCakes,price, cupcakeId);
             List<CupCake> currentOrderList = new ArrayList<>();
+            if(session.getAttribute("currentOrderList") != null){
+                currentOrderList = (List<CupCake>) session.getAttribute("currentOrderList");
+            }
             currentOrderList.add(tempCupCake);
 
 
-            request.setAttribute("currentOrderList", currentOrderList);
+            session.setAttribute("currentOrderList", currentOrderList);
             request.getRequestDispatcher("ordering.jsp").forward(request, response);
 
         } catch (DatabaseException e) {
