@@ -50,11 +50,12 @@ public class ordering extends HttpServlet {
                     List<CupCake> orderList = CupCakeFacade.getCakesByOrderId(currentOrderId, connectionPool);
                     List<CupCake> currentOrderList = new ArrayList<>();
                     for(CupCake o: orderList) {
-                        BottomCake bottomCake = o.getBottomCake();
-                        TopCake topCake = o.getTopCake();
-                        int amount = o.getAmount();
-                        float price = o.getPrice();
                         int cupcakeId = o.getCupCakeId();
+                        //CupCake cupCake = CupCakeFacade.getCakeByCakeId(cupcakeId, connectionPool);
+                        BottomCake bottomCake = BottomCakeFacade.getBottom(o.getBottomId(),connectionPool);
+                        TopCake topCake = TopCakeFacade.getTop(o.getTopId(), connectionPool);
+                        int amount = o.getQuantity();
+                        float price = o.getPrice();
                         CupCake tempCupcake = new CupCake(bottomCake, topCake, amount, price, cupcakeId);
                         currentOrderList.add(tempCupcake);
                     }
