@@ -10,22 +10,22 @@
     <jsp:attribute name="footer">Ordrer</jsp:attribute>
 
     <jsp:body>
-
-        <c:if test="sessionScope.user != null">
-            <h3>Dine ordrer</h3>
-
-            <table>
-                <tr>
+        <c:if test="${sessionScope.user != null}">
+            <h2>Dine ordrer</h2>
+            <table class="table table-striped mt-4">
+               <tr class="">
                     <th>Ordre Id</th>
+                    <th>Dato</th>
                     <th>Total Pris</th>
                     <th>Se Fulde Order</th>
                 </tr>
 
-                <c:forEach var="order" items="requestScope.userOrders" varStatus="loop">
+                <c:forEach var="order" items="${sessionScope.userOrders}" varStatus="loop">
                     <tr>
                         <td>${order.getOrderId()}</td>
-                       <!-- <td>${requestScope.userOrdersPrice.get(loop.index)}</td> -->
-                        <td><button></button></td>
+                        <td>${order.getOrderDate()}</td>
+                        <td>${sessionScope.userOrdersPrice.get(loop.index)}</td>
+                        <td><button class="btn btn-info text-light">Gå til ordren</button></td>
                     </tr>
                 </c:forEach>
             </table>
