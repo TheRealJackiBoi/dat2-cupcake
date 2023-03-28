@@ -1,5 +1,9 @@
 /* CSS stylesheet  for application */
-
+* {
+    --first-color: #cdb0ee;
+    --second-color: #004885;
+    --semi-white: #fff7d0;
+}
 table {
     border-collapse: collapse;
     border: 1px solid silver;
@@ -29,15 +33,13 @@ th, td {
 }
 
 /* Unique ID for the nav bar font NOT logged in */
-#navfontright {
-    color: #CDB0EE;
+.navfontright {
     font-size: 20px;
     float: right;
 }
 
 /* Unique ID for the nav bar font logged in */
-#navfontleft {
-    color: #CDB0EE;
+.navfontleft {
     font-size: 20px;
     float: left;
 }
@@ -45,12 +47,7 @@ th, td {
 /* Custom object for the nav bar properties */
 .navbarstyle {
     height: 35px;
-    width: 1280px;
-    background-color: #dedcdc;
-}
+    width: 100%;
+    background-color: var(--second-color);
 
-/* Custom object for the nav bar text properties */
-.navbar-nav {
-    line-height: 20px;
-    color: #CDB0EE;
 }
