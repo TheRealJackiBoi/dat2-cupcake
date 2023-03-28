@@ -10,7 +10,7 @@
 
     <jsp:body>
         <h2>Tak for din bestilling hos Olsker Cupcakes!</h2>
-        <div class="invoice-box">
+        <div class="Recceipt">
             <table>
                 <tr class="top">
                     <td colspan="2">
@@ -21,9 +21,9 @@
                                 </td>
 
                                 <td>
-                                    Order Nummer: ${requestScope.orderId}<br />
-                                    Bestilingsdato: ${requestScope.bestilingsDato}<br />
-                                    Hente dato:${requestScope.orderId}
+                                    Order Nummer: ${requestScope.currentOrderId}<br />
+                                    Bestilingsdato: ${requestScope.timeStamp}<br />
+                                    Hente dato:${requestScope}
                                 </td>
                             </tr>
                         </table>
@@ -52,9 +52,9 @@
                 </tr>
                 <c:forEach var="item" items="${sessionScope.list}">
                     <tr class="cupcake1">
-                        <td>${item.quantity}stk. ${item.} + ${sessionScope.list.get(0).topId}</td><br>
+                        <td>${item.quantity}stk. ${item.bottomCake} + ${item.topCake}</td><br>
 
-                        <td>${item.price} kr.</td><br>
+                        <td> = ${item.price} kr.</td><br>
 
                     </tr>
 
@@ -63,7 +63,7 @@
                 <tr class="total">
                     <td></td>
 
-                    <td>Total: </td>
+                    <td>Total: ${sessionScope.totalPrice}</td>
                 </tr>
             </table>
         </div>
