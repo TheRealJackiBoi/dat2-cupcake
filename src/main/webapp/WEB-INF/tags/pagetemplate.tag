@@ -38,7 +38,7 @@
                             <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp" id="navfontright">Login</a>
                         </c:if>
                         <c:if test="${sessionScope.user != null }">
-                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/" id="navfontleft">Se ordrer</a>
+                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/adminorders" id="navfontleft">Se ordrer</a>
                             <a class="nav-item nav-link" href="${pageContext.request.contextPath}/ordering" id="navfontleft">Bestil cupcakes</a>
                             <a class="nav-item nav-link" href="${pageContext.request.contextPath}/" id="navfontright">${sessionScope.user.username} ${sessionScope.user.balance}DKK</a>
                             <a class="nav-item nav-link" href="${pageContext.request.contextPath}/logout" id="navfontright">Log out</a>

@@ -3,7 +3,10 @@ package dat.backend.model.persistence;
 import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
 
+import javax.xml.crypto.Data;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -69,6 +72,30 @@ public class UserMapper
             throw new DatabaseException(ex, "Could not insert username into database");
         }
         return user;
+    }
+
+    static List<User> getAllUsers(ConnectionPool connectionPool) {
+        String sql = "SELECT * FROM user";
+
+        List<User> userList = new ArrayList<>();
+
+        try (Connection connection = connectionPool.getConnection()) {
+            try(PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+                    String email = resultSet.getString("email");
+                    String password = resultSet.getString("password");
+                    float balance = resultSet.getFloat("balance");
+                    int admin = resultSet.getInt("admin");
+
+                    userList.add(new User(email, password, balance, admin));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return userList;
     }
 
 
