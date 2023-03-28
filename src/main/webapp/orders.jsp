@@ -17,14 +17,16 @@
                     <th>Ordre Id</th>
                     <th>Dato</th>
                     <th>Total Pris</th>
+                    <th>Betalt</th>
                     <th>Se Fulde Order</th>
                 </tr>
 
                 <c:forEach var="order" items="${sessionScope.userOrders}" varStatus="loop">
                     <tr>
-                        <td>${order.getOrderId()}</td>
-                        <td>${order.getOrderDate()}</td>
+                        <td>${order.orderId}</td>
+                        <td>${order.orderDate}</td>
                         <td>${sessionScope.userOrdersPrice.get(loop.index)}</td>
+                        <td>${order.payed}</td>
                         <td><button class="btn btn-info text-light">Gå til ordren</button></td>
                     </tr>
                 </c:forEach>
