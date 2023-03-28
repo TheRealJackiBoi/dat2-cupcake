@@ -17,25 +17,20 @@ class OrderMapper {
         //returns all the orders that the user has made
         Logger.getLogger("web").log(Level.INFO, "");
 
-        Order order = null;
         List<Order> orderList = new ArrayList<>();
-        String sql = "SELECT * FROM order WHERE user_email = ?";
+        String sql = "SELECT * FROM cudia_dk_db_cupcake.order WHERE user_email = ?";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setString(1, userEmail);
 
                 ResultSet rs = ps.executeQuery();
-                if (rs.next()) {
+                while (rs.next()) {
                     int orderId = rs.getInt("order_id");
                     Timestamp orderDate = rs.getTimestamp("orderdate");
-                    User user = (User) rs.getObject("user");
-                    //String userEmail = rs.getString("user_email");
                     boolean payed = rs.getBoolean("payed");
-                    order = new Order(orderId, orderDate, user, userEmail, payed);
+                    Order order = new Order(orderId, orderDate, userEmail, payed);
                     orderList.add(order);
-                } else {
-                    throw new DatabaseException("no cakes available");
                 }
             }
         } catch (SQLException ex) {
@@ -59,11 +54,9 @@ class OrderMapper {
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
                     Timestamp orderDate = rs.getTimestamp("orderdate");
-                    User user = (User) rs.getObject("user");
                     String userEmail = rs.getString("user_email");
                     boolean payed = rs.getBoolean("payed");
-                    order = new Order(orderId, orderDate, user, userEmail, payed);
-                    ;
+                    order = new Order(orderId, orderDate, userEmail, payed);
                 } else {
                     throw new DatabaseException("no cakes available");
                 }
@@ -86,10 +79,9 @@ class OrderMapper {
                 if (rs.next()) {
                     int orderId = rs.getInt("order_id");
                     Timestamp orderDate = rs.getTimestamp("orderdate");
-                    User user = (User) rs.getObject("user");
                     String userEmail = rs.getString("user_email");
                     boolean payed = rs.getBoolean("payed");
-                    orderList.add(new Order(orderId, orderDate, user, userEmail, payed));
+                    orderList.add(new Order(orderId, orderDate,userEmail, payed));
                 } else {
                     throw new DatabaseException("no cakes available");
                 }
