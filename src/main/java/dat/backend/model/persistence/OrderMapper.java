@@ -5,6 +5,7 @@ import dat.backend.model.entities.Order;
 import dat.backend.model.entities.User;
 import dat.backend.model.exceptions.DatabaseException;
 
+import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -99,14 +100,13 @@ class OrderMapper {
         return orderList;
     }
 
-    static int addOrder(User user, String userEmail, ConnectionPool connectionPool) throws DatabaseException {
-        //set user og user email ind, auto genererer order id, timestamp og sætter payed til false som udgangspunkt
-        String sql = "INSERT INTO item (user, user_email) VALUES (?,?)";
+    static int addOrder(String userEmail, ConnectionPool connectionPool) throws DatabaseException {
+        //set user email ind, auto genererer order id, timestamp og sætter payed til false som udgangspunkt
+        String sql = "INSERT INTO cudia_dk_db_cupcake.order (user_email) VALUES (?)";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
-                ps.setObject(1, user);
-                ps.setString(2, userEmail);
+                ps.setString(1, userEmail);
 
                 ps.executeUpdate();
                 ResultSet rs = ps.getGeneratedKeys();
@@ -116,7 +116,7 @@ class OrderMapper {
                 e.printStackTrace();
             }
         } catch (SQLException e) {
-            throw new DatabaseException(e,"Something went wrong when trying to add order to the database");
+            throw new DatabaseException(e,"Something went wrong with the database, when trying to add a new cupcake");
         }
         return 0;
     }
