@@ -17,7 +17,7 @@
                         <table>
                             <tr>
                                 <td class="title">
-                                    <img src="" alt="Company logo" style="width: 100%; max-width: 300px" />
+                                    <img src="" alt="Olsker logo" style="width: 100%; max-width: 300px" />
                                 </td>
 
                                 <td>
@@ -43,29 +43,22 @@
                     </td>
                 </tr>
 
+
+
                 <tr class="heading">
                     <td>Items: </td>
 
                     <td>Price</td>
                 </tr>
+                <c:forEach var="item" items="${sessionScope.list}">
+                    <tr class="cupcake1">
+                        <td>${item.quantity}stk. ${item.} + ${sessionScope.list.get(0).topId}</td><br>
 
-                <tr class="cupcake1">
-                    <td>2stk vanilje + pistace</td>
+                        <td>${item.price} kr.</td><br>
 
-                    <td>25kr.</td>
-                </tr>
-                <tr class="cupcake2">
-                    <td>3stk karamel + jordbær</td>
+                    </tr>
 
-                    <td>35kr.</td>
-                </tr>
-                <tr class="cupcake3">
-                    <td>3stk chokolade + frosting</td>
-
-                    <td>45kr.</td>
-                </tr>
-
-
+                </c:forEach>
 
                 <tr class="total">
                     <td></td>
