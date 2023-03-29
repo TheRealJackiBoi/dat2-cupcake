@@ -45,7 +45,6 @@ class CupCakeMapper {
         Logger.getLogger("web").log(Level.INFO, "");
 
         List<CupCake> cupCakeList = new ArrayList<>();
-        CupCake cupCake = null;
 
         String sql = "SELECT * FROM cupcake WHERE order_id = ?";
 
@@ -61,7 +60,7 @@ class CupCakeMapper {
                     int bottomId = rs.getInt("bottom_id");
                     int topId = rs.getInt("top_id");
                     float price = rs.getFloat("price");
-                    cupCake = new CupCake(cupcakeId, quantity, orderId, bottomId, topId, price);
+                    CupCake cupCake = new CupCake(cupcakeId, quantity, orderId, bottomId, topId, price);
                     cupCakeList.add(cupCake);
                 }
             }
