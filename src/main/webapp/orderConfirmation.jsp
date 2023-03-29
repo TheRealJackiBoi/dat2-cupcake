@@ -72,7 +72,7 @@
                     </td>
                     <td></td>
                     <td><b>Total Price:</b></td>
-                    <td><b>${sessionScope.totalprice} kr.</b></td>
+                    <td><b> ${sessionScope.orderTotalPrice} kr.</b></td>
                 </tr>
             </table>
         </div>

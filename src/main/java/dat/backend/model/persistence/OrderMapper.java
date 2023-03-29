@@ -113,7 +113,7 @@ class OrderMapper {
 
     static void togglePayed(int orderId, ConnectionPool connectionPool) throws DatabaseException {
 
-        String sql = "UPDATE order SET payed = (1 - payed) WHERE order_id = ?";
+        String sql = "UPDATE cudia_dk_db_cupcake.order SET payed = (1 - payed) WHERE order_id = ?";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, orderId);

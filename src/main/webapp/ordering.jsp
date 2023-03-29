@@ -69,8 +69,11 @@
         </form>
 
 
-        <!-- this is meant to be the small area of the screen showing your curent order-->
+        <!-- this is meant to be the small area of the screen showing your current order-->
         <div class="col-5" style="background-color: #cdb0ee">
+            <c:if test="${requestScope.balanceInsufficient}">
+                <p>You don't have enough credit for this purchase, remove some cupcakes</p>
+            </c:if>
             <h2>Din ordre</h2>
             <!-- getting data from order table in mysql-->
             <c:forEach var="cupcakeordre" items="${sessionScope.currentOrderList}">
@@ -87,16 +90,16 @@
             <div>
                 <label>Din totale pris ${sessionScope.totalprice}Kr</label>
             </div>
-            <form name="confirmorder" action="orderConfirmation" method="get">
+            <form name="confirmorder" action="orderConfirmation" method="POST">
                 <fieldset style="margin-top: 50px">
                     <legend style="font-weight: bold; font-size: 20px">Vælg betalingsmetode:</legend>
 
                     <div>
-                        <input type="radio" id="pickup" name="paymentmethod" value="pickup"
+                        <input type="radio" id="pickup" name="paymentmethod" value="1"
                                checked>
                         <label for="pickup">Betal ved afhentning</label>
 
-                        <input type="radio" id="kredit" name="paymentmethod" value="kredit">
+                        <input type="radio" id="kredit" name="paymentmethod" value="0">
                         <label for="kredit">Betal med kredit</label>
                         <br/>
                         <button type="submit" class="btn btn-success" name="confirmorder"
