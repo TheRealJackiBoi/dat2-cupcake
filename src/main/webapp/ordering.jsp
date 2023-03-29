@@ -69,7 +69,7 @@
 
 
         <!-- this is meant to be the small area of the screen showing your curent order-->
-        <div class="col-5" style="background-color: mediumpurple">
+        <div class="col-5" style="background-color: #cdb0ee">
             <h2>Din ordre</h2>
             <!-- getting data from order table in mysql-->
             <c:forEach var="cupcakeordre" items="${sessionScope.currentOrderList}">
@@ -83,6 +83,9 @@
                     </form>
                 </div>
             </c:forEach>
+            <div>
+                <label>Din totale pris ${sessionScope.totalprice}Kr</label>
+            </div>
             <form name="confirmorder" action="confirmorder" method="POST">
                 <fieldset style="margin-top: 50px">
                     <legend style="font-weight: bold; font-size: 20px">Vælg betalingsmetode:</legend>
@@ -91,11 +94,12 @@
                         <input type="radio" id="pickup" name="paymentmethod" value="pickup"
                                checked>
                         <label for="pickup">Betal ved afhentning</label>
-                    </div>
 
-                    <div>
                         <input type="radio" id="kredit" name="paymentmethod" value="kredit">
                         <label for="kredit">Betal med kredit</label>
+                        <br/>
+                        <button type="submit" class="btn btn-success" name="confirmorder"
+                        value="${sessionScope.currentOrderList}">bekræft order</button>
                     </div>
                 </fieldset>
             </form>
