@@ -13,6 +13,7 @@
     </jsp:attribute>
 
     <jsp:body>
+
         <h1>Vi er klar til din bestilling</h1>
         <form name="currentorder" action="ordering" method="POST">
             <div class="container">

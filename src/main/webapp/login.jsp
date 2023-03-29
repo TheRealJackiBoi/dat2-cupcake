@@ -25,6 +25,5 @@
             <input type="submit"  value="Log in"/>
         </form>
         <a href="signUpPage.jsp">Opret Bruger</a><br>
-        <a href="orderConfirmation.jsp">Se din kvitering</a><br>
     </jsp:body>
 </t:pagetemplate>

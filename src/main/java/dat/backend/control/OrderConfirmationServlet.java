@@ -1,9 +1,7 @@
 package dat.backend.control;
 
 import dat.backend.model.config.ApplicationStart;
-import dat.backend.model.entities.CupCake;
-import dat.backend.model.entities.Order;
-import dat.backend.model.entities.User;
+import dat.backend.model.entities.*;
 import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.BottomCakeFacade;
 import dat.backend.model.persistence.ConnectionPool;
@@ -27,32 +25,32 @@ public class OrderConfirmationServlet extends HttpServlet {
 
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int cupcakeBottom = Integer.parseInt(request.getParameter("bottomcake"));
-        int cupcakeTop = Integer.parseInt(request.getParameter("topcake"));
-        int numberOfCakes = Integer.parseInt(request.getParameter("numberofcakes"));
-
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-        CupCake cupCake = null;
-        CupCakeFacade cupCakeFacade = new CupCakeFacade();
-        List<CupCake> cupCakeList = null;
-        Order order = null;
-        request.setAttribute("currentOrderId", order.getOrderId());
-        request.setAttribute("timeStamp", order.getOrderDate());
 
         try {
-            cupCakeList = cupCakeFacade.getCakesByOrderId(cupCake.getOrderId(), connectionPool);
-            float price = CupCakeFacade.calculatePrice(cupcakeBottom, cupcakeTop, numberOfCakes, connectionPool);
-            CupCake tempCupCake = new CupCake(BottomCakeFacade.getBottom(cupcakeBottom, connectionPool),
-                    TopCakeFacade.getTop(cupcakeTop, connectionPool), numberOfCakes, price);
+            int orderId = (int) session.getAttribute("currentOrderId");
+            List<CupCake> cupCakeList = CupCakeFacade.getCakesByOrderId(orderId, connectionPool);
             List<CupCake> currentOrder = new ArrayList<>();
-            List<Float> currentOrderPriceList = new ArrayList<>();
-            currentOrder.add(tempCupCake);
-
-            for (int i = 0; i <= currentOrder.size(); i++){
-               float cp = currentOrder.get(i).getPrice();
-                currentOrderPriceList.add(cp);
+            for(CupCake o: cupCakeList) {
+                int cupcakeId = o.getCupCakeId();
+                //CupCake cupCake = CupCakeFacade.getCakeByCakeId(cupcakeId, connectionPool);
+                BottomCake bottomCake = BottomCakeFacade.getBottom(o.getBottomId(),connectionPool);
+                TopCake topCake = TopCakeFacade.getTop(o.getTopId(), connectionPool);
+                int amount = o.getQuantity();
+                float price = o.getPrice();
+                CupCake tempCupcake = new CupCake(bottomCake, topCake, amount, price, cupcakeId);
+                currentOrder.add(tempCupcake);
             }
+
+            List<Float> currentOrderPriceList = new ArrayList<>();
+
+            //request.setAttribute("orderDate");
+
+          //  for (int i = 0; i <= currentOrder.size(); i++){
+           //    float cp = currentOrder.get(i).getPrice();
+            //    currentOrderPriceList.add(cp);
+           // }
             int sum = 0;
 
             for (float number : currentOrderPriceList){
