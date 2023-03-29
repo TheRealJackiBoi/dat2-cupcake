@@ -74,7 +74,8 @@ public class UserMapper
         return user;
     }
 
-    static List<User> getAllUsers(ConnectionPool connectionPool) {
+    static List<User> getAllUsers(ConnectionPool connectionPool) throws DatabaseException {
+        Logger.getLogger("web").log(Level.INFO, "");
         String sql = "SELECT * FROM user";
 
         List<User> userList = new ArrayList<>();
@@ -92,11 +93,54 @@ public class UserMapper
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new DatabaseException(e, "there was an error retrieving information from the database");
         }
 
         return userList;
     }
 
 
+    public static User getUserByEmail(String email, ConnectionPool connectionPool) {
+        Logger.getLogger("web").log(Level.INFO, "");
+        String sql = "SELECT * FROM user WHERE email = ?";
+
+        List<User> userList = new ArrayList<>();
+
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setString(1, email);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+                    String email_ = resultSet.getString("email");
+                    String password = resultSet.getString("password");
+                    float balance = resultSet.getFloat("balance");
+                    int admin = resultSet.getInt("admin");
+
+                    User newUser = new User(email_, password, balance, admin);
+                    return newUser;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static User updateUser(String email, float balance, ConnectionPool connectionPool) throws DatabaseException {
+        Logger.getLogger("web").log(Level.INFO, "");
+        //String sql = "UPDATE user SET (email, password, balance, admin) = (?, ?, ?, ?) WHERE email = ?";
+        String sql = "UPDATE user SET balance = ? WHERE email = ?";
+
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setFloat(1, balance);
+                ps.setString(2, email);
+                ps.executeUpdate();
+                }
+            } catch(SQLException e) {
+            throw new DatabaseException(e, "Failed to update user information");
+
+        }
+        return null;
+    }
 }
