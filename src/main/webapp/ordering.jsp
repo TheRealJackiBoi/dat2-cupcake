@@ -44,10 +44,10 @@
                     </div>
 
                     <div class="col">
+                        <label for="numberofcakes"></label>
                         <select class="form-select" aria-labelledby="numberofcakes" name="numberofcakes"
                                 id="numberofcakes">
-                            <option selected>Vælg antal cupcakes!</option>
-                            <option value="1">1</option>
+                            <option value="1" selected>1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
