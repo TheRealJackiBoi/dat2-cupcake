@@ -32,12 +32,12 @@ public class SeeOrderServlet extends HttpServlet {
         List<CupCake> cupcakes;
         Order order;
 
-        int orderId = (int) request.getAttribute("userid");
+        int orderId = Integer.parseInt(request.getParameter("orderid"));
 
         try {
             List<CupCake> orderList = CupCakeFacade.getCakesByOrderId(orderId, connectionPool);
             cupcakes = new ArrayList<>();
-            for(CupCake o: orderList) {
+            for(CupCake o : orderList) {
                 BottomCake bottomCake = o.getBottomCake();
                 TopCake topCake = o.getTopCake();
                 int amount = o.getAmount();

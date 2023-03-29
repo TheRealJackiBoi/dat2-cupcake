@@ -27,7 +27,7 @@
                         <td>${order.orderDate}</td>
                         <td>${sessionScope.userOrdersPrice.get(loop.index)}</td>
                         <td>${order.payed}</td>
-                        <td><button class="btn btn-info text-light" onclick="window.location.href='http://localhost:8080/Cupcake/SeeOrder'">
+                        <td><button class="btn btn-info text-light" onclick="window.location.href='http://localhost:8080/Cupcake/SeeOrder?orderid=${order.orderId}'">
                     Gå til ordren
                     </button></td>
                     </tr>
