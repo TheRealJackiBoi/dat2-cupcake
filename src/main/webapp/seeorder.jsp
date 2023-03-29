@@ -10,32 +10,58 @@
     <jsp:attribute name="footer">Se Order</jsp:attribute>
 
     <jsp:body>
-        <!--
-        <c:if test="${sessionScope.user != null}">
-            <h2>Dine ordrer</h2>
-            <table class="table table-striped mt-4">
-            <tr class="">
-            <th>Ordre Id</th>
-            <th>Dato</th>
-            <th>Total Pris</th>
-            <th>Betalt</th>
-            <th>Se Fulde Order</th>
-            </tr>
+        <div class="Recceipt">
+            <table>
+                <tr class="top">
+                    <td colspan="2">
+                        <table>
+                            <tr>
+                                <td class="title">
+                                    <img src="" alt="Olsker logo" style="width: 100%; max-width: 300px" />
+                                </td>
 
-            <c:forEach var="order" items="${sessionScope.userOrders}" varStatus="loop">
-                <tr>
-                <td>${order.orderId}</td>
-                <td>${order.orderDate}</td>
-                <td>${sessionScope.userOrdersPrice.get(loop.index)}</td>
-                <td>${order.payed}</td>
-                <td><button class="btn btn-info text-light" onclick="window.location.href='http://localhost:8080/Cupcake/SeeOrder?orderid=${order.orderId}'">
-                Gå til ordren
-                </button></td>
+                                <td>
+                                    Order Nummer: ${requestScope.order.orderId}<br />
+                                    Bestilingsdato: ${requestScope.order.orderDate}<br />
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
                 </tr>
-            </c:forEach>
+
+                <tr class="information">
+                    <td colspan="2">
+                        <table>
+                            <tr>
+                                <td>
+                                    Kunde: ${sessionScope.user.username}<br />
+                                    Adresse: Olsker, Bornholm<br />
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+
+
+                <tr class="heading">
+                    <td>Items: </td>
+
+                    <td>Price</td>
+                </tr>
+                <c:forEach var="cupcake" items="${requestScope.orderCupcakes}">
+                    <tr>
+                        <td>${cupcake.quantity}stk </td> <td> ${cupcake.bottomCake.name}</td> <td> ${cupcake.topCake.name} </td>
+                    </tr>
+                </c:forEach>
+
+                <tr class="total">
+                    <td></td>
+
+                    <td>Total: ${requestScope.orderTotalPrice}</td>
+                </tr>
             </table>
-        </c:if>
-        -->
+        </div>
         <c:if test="${sessionScope.user == null}">
             <p>You are not logged in yet. You can do it here: <a
                     href="../login.jsp">Login</a></p>

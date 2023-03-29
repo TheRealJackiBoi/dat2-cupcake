@@ -47,6 +47,7 @@ public class SeeOrderServlet extends HttpServlet {
             }
             request.setAttribute("orderCupcakes", cupcakes);
             request.setAttribute("order", order);
+            request.setAttribute("orderTotalPrice", OrderFacade.calculateTotalPrice(orderId, connectionPool));
 
             request.getRequestDispatcher("seeorder.jsp").forward(request, response);
         } catch (DatabaseException e) {
