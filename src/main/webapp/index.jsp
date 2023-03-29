@@ -22,12 +22,12 @@
                 <img src="${pageContext.request.contextPath}/images/cupcake7.png"
                      class="img-fluid" alt="cupcake8.png"/>
                 <div class="text">
-                    <h3>Lækker sulten? Kig ind</h3>
+                    <h3>Lækkersulten? Kig ind</h3>
                     <c:if test="${sessionScope.user != null}">
-                        <button class="indexbutton" onclick="window.location.href='http://localhost:8080/Cupcake/ordering';">Bestil cupcakes</button>
+                        <button class="indexbutton" onclick="window.location.href='http://localhost:8080/cupcake/ordering';">Bestil cupcakes</button>
                     </c:if>
                     <c:if test="${sessionScope.user == null}">
-                        <button class="indexbutton" onclick="window.location.href='http://localhost:8080/Cupcake/login.jsp';">Bestil cupcakes</button>
+                        <button class="indexbutton" onclick="window.location.href='http://localhost:8080/cupcake/login.jsp';">Bestil cupcakes</button>
                     </c:if>
                 </div>
             </div>
