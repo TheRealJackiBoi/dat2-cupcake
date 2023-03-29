@@ -45,7 +45,7 @@ class OrderMapper {
 
         Order order = null;
 
-        String sql = "SELECT * FROM order WHERE order_id = ?";
+        String sql = "SELECT * FROM cudia_dk_db_cupcake.order WHERE order_id = ?";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -71,19 +71,17 @@ class OrderMapper {
         //returns all orders, fx for the admins
         List<Order> orderList = new ArrayList<>();
 
-        String sql = "SELECT * FROM order";
+        String sql = "SELECT * FROM cudia_dk_db_cupcake.order ORDER BY user_email ASC;";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
-                if (rs.next()) {
+                while (rs.next()) {
                     int orderId = rs.getInt("order_id");
                     Timestamp orderDate = rs.getTimestamp("orderdate");
                     String userEmail = rs.getString("user_email");
                     boolean payed = rs.getBoolean("payed");
                     orderList.add(new Order(orderId, orderDate,userEmail, payed));
-                } else {
-                    throw new DatabaseException("no cakes available");
                 }
             }
         } catch (SQLException ex) {

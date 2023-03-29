@@ -23,7 +23,12 @@
                      class="img-fluid" alt="cupcake8.png"/>
                 <div class="text">
                     <h3>Lækker sulten? Kig ind</h3>
-                    <button class="indexbutton" onclick="window.location.href='http://localhost:8080/Cupcake/ordering';">Bestil cupcakes</button>
+                    <c:if test="${sessionScope.user != null}">
+                        <button class="indexbutton" onclick="window.location.href='http://localhost:8080/Cupcake/ordering';">Bestil cupcakes</button>
+                    </c:if>
+                    <c:if test="${sessionScope.user == null}">
+                        <button class="indexbutton" onclick="window.location.href='http://localhost:8080/Cupcake/login.jsp';">Bestil cupcakes</button>
+                    </c:if>
                 </div>
             </div>
         </div>

@@ -1,16 +1,16 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@page errorPage="error.jsp" isErrorPage="false" %>
-<link rel="stylesheet" href="css/style.css">
 
 <t:pagetemplate>
-    <jsp:attribute name="header">
-    </jsp:attribute>
+    <jsp:attribute name="header">Se Order</jsp:attribute>
+
+    <jsp:attribute name="footer">Se Order</jsp:attribute>
 
     <jsp:body>
         <c:if test="${sessionScope.user != null}">
-        <h2>Tak for din bestilling hos Olsker Cupcakes!</h2>
         <div class="Recceipt">
             <table>
                 <tr class="top">
@@ -22,8 +22,8 @@
                                 </td>
 
                                 <td>
-                                    Order Nummer: ${sessionScope.currentOrderId}<br />
-                                    Bestilingsdato: ${sessionScope.orderDate}<br />
+                                    Order Nummer: ${requestScope.order.orderId}<br />
+                                    Bestilingsdato: ${requestScope.order.orderDate}<br />
                                 </td>
                             </tr>
                         </table>
@@ -52,10 +52,10 @@
 
                     <td>Price</td>
                 </tr>
-                <c:forEach var="cupcake" items="${sessionScope.list}">
-                <tr>
-                   <td> ${cupcake.amount}stk.</td> <td> ${cupcake.bottomCake.name}</td> <td>${cupcake.topCake.name}</td> <td>${cupcake.price} kr.</td>
-                </tr>
+                <c:forEach var="cupcake" items="${requestScope.orderCupcakes}">
+                    <tr>
+                        <td> ${cupcake.amount}stk.</td> <td> ${cupcake.bottomCake.name}</td> <td>${cupcake.topCake.name}</td> <td>${cupcake.price} kr.</td>
+                    </tr>
 
 
                 </c:forEach>
@@ -64,11 +64,14 @@
                     <td></td>
                     <td></td>
                     <td><b>Total Price:</b></td>
-                    <td><b>${sessionScope.totalprice} kr.</b></td>
+                    <td><b>${requestScope.orderTotalPrice} kr.</b></td>
                 </tr>
             </table>
         </div>
         </c:if>
+        <c:if test="${sessionScope.user == null}">
+            <p>You are not logged in yet. You can do it here: <a
+                    href="../login.jsp">Login</a></p>
+        </c:if>
     </jsp:body>
-
 </t:pagetemplate>

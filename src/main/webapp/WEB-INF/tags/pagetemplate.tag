@@ -42,10 +42,12 @@
                         <c:if test="${sessionScope.user != null }">
                             <a class="nav-item nav-link text-light navfontleft" href="${pageContext.request.contextPath}/orders" id="">Se ordrer</a>
                             <a class="nav-item nav-link text-light navfontleft" href="${pageContext.request.contextPath}/ordering" id="">Bestil cupcakes</a>
-
-                            <a class=" nav-item nav-link text-light text-light float-right navfontright" href="${pageContext.request.contextPath}/WEB-INF/welcome.jsp" id="navfontright-user">${sessionScope.user.username} ${sessionScope.user.balance}DKK</a>
+                            <c:if test="${sessionScope.user.admin == 1}">
+                                <a class="nav-item nav-link text-light navfontleft" href="${pageContext.request.contextPath}/admincustomers">Kunder</a>
+                            </c:if>
+                            <a class=" nav-item nav-link text-light text-light float-right navfontright" href="${pageContext.request.contextPath}/index.jsp" id="navfontright-user">${sessionScope.user.username} ${sessionScope.user.balance}DKK</a>
                             <a class="nav-item nav-link float-right text-light navfontright" href="${pageContext.request.contextPath}/logout" id="navfontright-logout">Log out</a>
-                                </c:if>
+                        </c:if>
                 </div>
             </div>
         </div>
