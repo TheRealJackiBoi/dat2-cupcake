@@ -26,15 +26,13 @@ class CupCakeMapper {
                 ps.setInt(1, cupcakeId);
 
                 ResultSet rs = ps.executeQuery();
-                if (rs.next()) {
+                while (rs.next()) {
                     int quantity = rs.getInt("quantity");
                     int orderId = rs.getInt("order_id");
                     int bottomId = rs.getInt("bottom_id");
                     int topId = rs.getInt("top_id");
                     float price = rs.getFloat("price");
                     cupCake = new CupCake(cupcakeId, quantity, orderId, bottomId, topId, price);
-                } else {
-                    throw new DatabaseException("no cakes available");
                 }
             }
         } catch (SQLException ex) {
@@ -81,7 +79,7 @@ class CupCakeMapper {
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
-                if (rs.next()) {
+                while (rs.next()) {
                     int cupcakeId = rs.getInt("cupcake_id");
                     int quantity = rs.getInt("quantity");
                     int orderId = rs.getInt("order_id");
@@ -89,8 +87,6 @@ class CupCakeMapper {
                     int topId = rs.getInt("top_id");
                     float price = rs.getFloat("price");
                     cupCakeList.add(new CupCake(cupcakeId, quantity, orderId, bottomId, topId, price));
-                } else {
-                    throw new DatabaseException("no cakes available");
                 }
             }
         } catch (SQLException ex) {
