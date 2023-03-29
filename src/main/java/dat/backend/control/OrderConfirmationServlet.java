@@ -32,6 +32,7 @@ public class OrderConfirmationServlet extends HttpServlet {
             int orderId = (int) session.getAttribute("currentOrderId");
             List<CupCake> cupCakeList = CupCakeFacade.getCakesByOrderId(orderId, connectionPool);
             List<CupCake> currentOrder = new ArrayList<>();
+            List<Float> totalPriceList = new ArrayList<>();
             for(CupCake o: cupCakeList) {
                 int cupcakeId = o.getCupCakeId();
                 //CupCake cupCake = CupCakeFacade.getCakeByCakeId(cupcakeId, connectionPool);
@@ -41,24 +42,24 @@ public class OrderConfirmationServlet extends HttpServlet {
                 float price = o.getPrice();
                 CupCake tempCupcake = new CupCake(bottomCake, topCake, amount, price, cupcakeId);
                 currentOrder.add(tempCupcake);
+
             }
+            for (CupCake c: currentOrder) {
+                float price = c.getPrice();
+                totalPriceList.add(price);
 
-            List<Float> currentOrderPriceList = new ArrayList<>();
-
-            //request.setAttribute("orderDate");
-
-          //  for (int i = 0; i <= currentOrder.size(); i++){
-           //    float cp = currentOrder.get(i).getPrice();
-            //    currentOrderPriceList.add(cp);
-           // }
-            int sum = 0;
-
-            for (float number : currentOrderPriceList){
+            }
+            float sum = 0;
+            for (float number: totalPriceList) {
                 sum += number;
             }
 
+
+            List<Float> currentOrderPriceList = new ArrayList<>();
+
+            session.setAttribute("totalPrice,", sum);
             session.setAttribute("list", currentOrder);
-            session.setAttribute("totalPrice", sum);
+            request.getRequestDispatcher("orderConfirmation.jsp").forward(request, response);
 
 
         } catch (DatabaseException e) {

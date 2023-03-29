@@ -10,7 +10,6 @@
 
     <jsp:body>
         <h2>Tak for din bestilling hos Olsker Cupcakes!</h2>
-        ${sessionScope.list}
         <div class="Recceipt">
             <table>
                 <tr class="top">
@@ -47,20 +46,24 @@
 
                 <tr class="heading">
                     <td>Items: </td>
+                    <td>Buttom: </td>
+                    <td>Top: </td>
 
                     <td>Price</td>
                 </tr>
                 <c:forEach var="cupcake" items="${sessionScope.list}">
-                    ${sessionScope.list}
-                    ${cupcake.quantity}stk. ${cupcake.bottomCake.name} + ${cupcake.topCake.name}
+                <tr>
+                   <td> ${cupcake.quantity}stk.</td> <td> ${cupcake.bottomCake.name}</td> <td>${cupcake.topCake.name}</td> <td>${cupcake.price} kr.</td>
+                </tr>
 
 
                 </c:forEach>
 
                 <tr class="total">
                     <td></td>
-
-                    <td>Total: ${sessionScope.totalPrice}</td>
+                    <td></td>
+                    <td><b>Total Price:</b></td>
+                    <td><b>${sessionScope.totalprice} kr.</b></td>
                 </tr>
             </table>
         </div>
