@@ -100,8 +100,8 @@ class CupCakeMapper {
         float bottomCakePrice = BottomCakeMapper.getBottomPrice(cupcakeBottom, connectionPool);
         float topCakePrice = TopCakeFacade.getTopPrice(cupcakeTop, connectionPool);
 
-        float price = bottomCakePrice + topCakePrice * numberOfCakes;
-        return price;
+
+        return (bottomCakePrice + topCakePrice) * numberOfCakes;
     }
 
     public static int addCupCake(int numberOfCakes, int newOrderId, int cupcakeBottom, int cupcakeTop, float price, ConnectionPool connectionPool) throws DatabaseException {
