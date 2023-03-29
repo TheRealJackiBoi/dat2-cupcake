@@ -6,13 +6,13 @@
 <t:pagetemplate>
 
         <jsp:attribute name="header">
-            Admin orders
+            Admin customers
     </jsp:attribute>
     <jsp:attribute name="footer">
 
     </jsp:attribute>
     <jsp:body>
-        <h3>Testing</h3>
+        <h3>Admin</h3>
             <table class="table table-striped mt-4">
                 <tr>
                     <th>Email</th>
@@ -20,6 +20,7 @@
                     <th>Admin</th>
                     <th>Actions</th>
                 </tr>
+                <!-- Print user variables into tables -->
                 <c:forEach var="user" items="${requestScope.userList}">
                         <tr>
                             <td>
@@ -39,8 +40,10 @@
                                 </c:choose>
                             </td>
                             <td>
-                                <button type="submit" class="btn btn-outline-success btn-sm">Orders</button>
-                                <button type="submit" class="btn btn-outline-warning btn-sm">Edit</button>
+                                <button type="submit" class="btn btn-outline-success btn-sm"
+                                        onclick="window.location.href='http://localhost:8080/cupcake/orders';">Orders</button>
+                                <button type="submit" class="btn btn-outline-warning btn-sm" formaction="editcustomer"
+                                        onclick="window.location.href='http://localhost:8080/cupcake/edituserinfo?email=${user.username}';">Edit</button>
                             </td>
                         </tr>
                  </c:forEach>

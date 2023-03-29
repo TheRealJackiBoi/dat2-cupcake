@@ -2,6 +2,7 @@ package dat.backend.control;
 
 import dat.backend.model.config.ApplicationStart;
 import dat.backend.model.entities.User;
+import dat.backend.model.exceptions.DatabaseException;
 import dat.backend.model.persistence.ConnectionPool;
 import dat.backend.model.persistence.UserFacade;
 
@@ -11,16 +12,24 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "AdminOrders", value = "/adminorders")
-public class AdminOrders extends HttpServlet {
+@WebServlet(name = "AdminOrders", value = "/admincustomers")
+public class AdminCustomers extends HttpServlet {
     private static ConnectionPool connectionPool = ApplicationStart.getConnectionPool();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            List<User> userList = UserFacade.getAllUsers(connectionPool);
-            request.setAttribute("userList", userList);
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
 
-            request.getRequestDispatcher("WEB-INF/adminorders.jsp").forward(request, response);
+        List<User> userList = null;
+        try {
+            userList = UserFacade.getAllUsers(connectionPool);
+        } catch (DatabaseException e) {
+            e.printStackTrace();
+        }
+        request.setAttribute("userList", userList);
+
+        request.getRequestDispatcher("WEB-INF/admincustomers.jsp").forward(request, response);
     }
 
     @Override
