@@ -67,32 +67,23 @@
             </div>
         </form>
 
-        <form name="confirmorder" action="confirmorder" method="POST">
-            <!-- this is meant to be the small area of the screen showing your curent order-->
-            <div class="col-5" style="background-color: mediumpurple">
-                <h2>Din ordre</h2>
-                <!-- getting data from order table in mysql-->
-                <c:forEach var="cupcakeordre" items="${requestScope.currentOrderList}">
-                    ${cupcakeordre.bottomCake.name} med ${cupcakeordre.topCake.name} til ${cupcakeordre.price}Kr
-                    <div>
-                        <select class="form-select" aria-labelledby="changenumberofcakes"
-                                name="changenumberofcakes" id="changenumberofcakes">
-                            <option selected>${cupcakeordre.amount}</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                        </select>
-                    </div>
-                    <button class="btn btn-danger" value="remove">Fjern cupcake</button>
-                </c:forEach>
 
+        <!-- this is meant to be the small area of the screen showing your curent order-->
+        <div class="col-5" style="background-color: mediumpurple">
+            <h2>Din ordre</h2>
+            <!-- getting data from order table in mysql-->
+            <c:forEach var="cupcakeordre" items="${sessionScope.currentOrderList}">
+                <div>
+                        ${cupcakeordre.amount}x ${cupcakeordre.bottomCake.name} med ${cupcakeordre.topCake.name}
+                    til ${cupcakeordre.price}Kr
+                    <form method="POST">
+                        <button type="submit" formaction="removefromorder" class="btn btn-danger" name="removecupcake"
+                                value="${cupcakeordre.cupCakeId}">Fjern cupcake
+                        </button>
+                    </form>
+                </div>
+            </c:forEach>
+            <form name="confirmorder" action="confirmorder" method="POST">
                 <fieldset style="margin-top: 50px">
                     <legend style="font-weight: bold; font-size: 20px">Vælg betalingsmetode:</legend>
 
@@ -107,9 +98,8 @@
                         <label for="kredit">Betal med kredit</label>
                     </div>
                 </fieldset>
-            </div>
-        </form>
-
+            </form>
+        </div>
 
     </jsp:body>
 

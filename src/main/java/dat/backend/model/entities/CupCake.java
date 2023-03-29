@@ -29,6 +29,14 @@ public class CupCake {
         this.price = price;
     }
 
+    public CupCake(BottomCake bottomCake, TopCake topCake, int amount,float price, int cupCakeId){
+        this.bottomCake = bottomCake;
+        this.topCake = topCake;
+        this.amount = amount;
+        this.price = price;
+        this.cupCakeId = cupCakeId;
+    }
+
     public int getCupCakeId() {
         return cupCakeId;
     }
