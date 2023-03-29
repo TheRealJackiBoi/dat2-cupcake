@@ -12,7 +12,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "AdminOrders", value = "/admincustomers")
+@WebServlet(name = "AdminCustomers", value = "/admincustomers")
 public class AdminCustomers extends HttpServlet {
     private static ConnectionPool connectionPool = ApplicationStart.getConnectionPool();
 

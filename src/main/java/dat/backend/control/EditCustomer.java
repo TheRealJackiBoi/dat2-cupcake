@@ -34,12 +34,17 @@ public class EditCustomer extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
         float balance = Float.parseFloat(request.getParameter("balance"));
+        int admin;
         User user = UserFacade.getUserByEmail(email, connectionPool);
         request.setAttribute("email", user);
-        //request.getRequestDispatcher("admincustomers").forward(request, response);
 
+        if  (request.getParameterMap().containsKey("admin")) {
+            admin = 1;
+        } else {
+            admin = 0;
+        }
         try {
-            UserMapper.updateUser(email, balance, connectionPool);
+            UserMapper.updateUser(email, balance, admin, connectionPool);
             response.sendRedirect("admincustomers");
         } catch (DatabaseException e) {
             e.printStackTrace();

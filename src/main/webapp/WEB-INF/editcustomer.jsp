@@ -10,14 +10,23 @@
 
     <jsp:body>
         <h3>Edit customer</h3>
-        <form method="POST">
-            <label for="email">Email</label>
-            <input type="text" id="email" value="${requestScope.edituser.username}"
-            placeholder="${requestScope.edituser.username}" name="email" disabled>
-            <label for="balance">Balance</label>
-                <input id="balance" type="text" name="balance" value="${requestScope.edituser.balance}"
-                placeholder="${requestScope.edituser.balance}">
+        <form class="form"method="POST">
 
+            <label for="email">Email</label>
+            <input  id="email" type="text" name="email" value="${requestScope.edituser.username}" placeholder="${requestScope.edituser.username}" readonly>
+
+            <label for="balance">Balance</label>
+            <input id="balance" type="text" name="balance" value="${requestScope.edituser.balance}" placeholder="${requestScope.edituser.balance}">
+
+            <div class="form-check form-switch">
+                <label class="form-check-label" for="admin">Admin</label>
+                <c:if test="${requestScope.edituser.admin == 1}">
+                <input class="form-check-input" type="checkbox" id="admin" name="admin" checked>
+                </c:if>
+                <c:if test="${requestScope.edituser.admin == 0}">
+                <input class="form-check-input" type="checkbox" id="admin" name="admin">
+                </c:if>
+            </div>
             <button formaction="editcustomer" name="balance"
                     class="align-baseline btn btn-outline-warning">Edit</button>
         </form>

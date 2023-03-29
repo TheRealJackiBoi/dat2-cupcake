@@ -126,15 +126,16 @@ public class UserMapper
         return null;
     }
 
-    public static User updateUser(String email, float balance, ConnectionPool connectionPool) throws DatabaseException {
+    public static User updateUser(String email, float balance, int admin, ConnectionPool connectionPool) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         //String sql = "UPDATE user SET (email, password, balance, admin) = (?, ?, ?, ?) WHERE email = ?";
-        String sql = "UPDATE user SET balance = ? WHERE email = ?";
+        String sql = "UPDATE user SET balance = ?, admin = ? WHERE email = ?";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setFloat(1, balance);
-                ps.setString(2, email);
+                ps.setInt(2, admin);
+                ps.setString(3, email);
                 ps.executeUpdate();
                 }
             } catch(SQLException e) {

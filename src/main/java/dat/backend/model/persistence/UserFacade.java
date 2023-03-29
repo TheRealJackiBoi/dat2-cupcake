@@ -24,7 +24,7 @@ public class UserFacade
         return UserMapper.getUserByEmail(email, connectionPool);
     }
 
-    public static User updateUser(float balance, String email, ConnectionPool connectionPool) throws DatabaseException {
-        return UserMapper.updateUser(email, balance, connectionPool);
+    public static User updateUser(float balance, String email, int admin, ConnectionPool connectionPool) throws DatabaseException {
+        return UserMapper.updateUser(email, balance, admin, connectionPool);
     }
 }
