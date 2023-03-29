@@ -18,12 +18,17 @@
                         <table>
                             <tr>
                                 <td class="title">
-                                    <img src="" alt="Olsker logo" style="width: 100%; max-width: 300px" />
+                                    Olsker's Cupcakes
                                 </td>
-
+                            </tr>
+                            <tr>
                                 <td>
-                                    Order Nummer: ${requestScope.order.orderId}<br />
-                                    Bestilingsdato: ${requestScope.order.orderDate}<br />
+                                    Order Nummer: ${requestScope.order.orderId}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Bestilingsdato: ${requestScope.order.orderDate}
                                 </td>
                             </tr>
                         </table>
@@ -61,7 +66,9 @@
                 </c:forEach>
 
                 <tr class="total">
-                    <td></td>
+                    <td>
+                        Status: <b><c:if test="${requestScope.order.payed}">Betalt</c:if> <c:if test="${!requestScope.order.payed}">Ikke Betalt</c:if></b>
+                    </td>
                     <td></td>
                     <td><b>Total Price:</b></td>
                     <td><b>${requestScope.orderTotalPrice} kr.</b></td>

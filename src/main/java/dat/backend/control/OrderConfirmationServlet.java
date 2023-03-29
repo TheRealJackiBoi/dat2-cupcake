@@ -3,10 +3,7 @@ package dat.backend.control;
 import dat.backend.model.config.ApplicationStart;
 import dat.backend.model.entities.*;
 import dat.backend.model.exceptions.DatabaseException;
-import dat.backend.model.persistence.BottomCakeFacade;
-import dat.backend.model.persistence.ConnectionPool;
-import dat.backend.model.persistence.CupCakeFacade;
-import dat.backend.model.persistence.TopCakeFacade;
+import dat.backend.model.persistence.*;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -30,6 +27,7 @@ public class OrderConfirmationServlet extends HttpServlet {
 
         try {
             int orderId = (int) session.getAttribute("currentOrderId");
+            Order order = OrderFacade.getOrderByOrderId(orderId, connectionPool);
             List<CupCake> cupCakeList = CupCakeFacade.getCakesByOrderId(orderId, connectionPool);
             List<CupCake> currentOrder = new ArrayList<>();
             List<Float> totalPriceList = new ArrayList<>();
@@ -57,6 +55,7 @@ public class OrderConfirmationServlet extends HttpServlet {
 
             List<Float> currentOrderPriceList = new ArrayList<>();
 
+            session.setAttribute("orderConfirmOrder", order);
             session.setAttribute("totalPrice,", sum);
             session.setAttribute("list", currentOrder);
             request.getRequestDispatcher("orderConfirmation.jsp").forward(request, response);
