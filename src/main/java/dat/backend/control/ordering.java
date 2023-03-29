@@ -106,8 +106,10 @@ public class ordering extends HttpServlet {
             }
             currentOrderList.add(tempCupCake);
 
+            int totalprice = (int) OrderFacade.calculateTotalPrice(orderId, connectionPool);
 
             session.setAttribute("currentOrderList", currentOrderList);
+            session.setAttribute("totalprice", totalprice);
             request.getRequestDispatcher("ordering.jsp").forward(request, response);
 
         } catch (DatabaseException e) {
