@@ -41,12 +41,12 @@ public class OrdersServlet extends HttpServlet {
         //Creating lists to forward to jsp site
         List<Order> orders;
         List<Float> ordersTotalPrice = new ArrayList<>();
-        if (user.getAdmin() == 1) {
-
-        }
             try {
-                orders = OrderFacade.getOrdersByUserEmail(user.getUsername(), connectionPool);
-
+                if (user.getAdmin() == 1) {
+                    orders = OrderFacade.getAllOrders(connectionPool);
+                } else {
+                    orders = OrderFacade.getOrdersByUserEmail(user.getUsername(), connectionPool);
+                }
                 for (Order o : orders) {
                     ordersTotalPrice.add(OrderFacade.calculateTotalPrice(o.getOrderId(), connectionPool));
                 }

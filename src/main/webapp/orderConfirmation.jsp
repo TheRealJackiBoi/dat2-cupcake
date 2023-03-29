@@ -9,6 +9,7 @@
     </jsp:attribute>
 
     <jsp:body>
+        <c:if test="${sessionScope.user != null}">
         <h2>Tak for din bestilling hos Olsker Cupcakes!</h2>
         <div class="Recceipt">
             <table>
@@ -53,7 +54,7 @@
                 </tr>
                 <c:forEach var="cupcake" items="${sessionScope.list}">
                 <tr>
-                   <td> ${cupcake.quantity}stk.</td> <td> ${cupcake.bottomCake.name}</td> <td>${cupcake.topCake.name}</td> <td>${cupcake.price} kr.</td>
+                   <td> ${cupcake.amount}stk.</td> <td> ${cupcake.bottomCake.name}</td> <td>${cupcake.topCake.name}</td> <td>${cupcake.price} kr.</td>
                 </tr>
 
 
@@ -67,6 +68,7 @@
                 </tr>
             </table>
         </div>
+        </c:if>
     </jsp:body>
 
 </t:pagetemplate>

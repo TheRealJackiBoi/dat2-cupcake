@@ -12,6 +12,8 @@
     <jsp:body>
         <c:if test="${sessionScope.user != null}">
             <h2>Dine ordrer</h2>
+
+            <c:if test="${sessionScope.user.admin == 0}">
             <table class="table table-striped mt-4">
                <tr class="">
                     <th>Ordre Id</th>
@@ -33,6 +35,32 @@
                     </tr>
                 </c:forEach>
             </table>
+            </c:if>
+            <c:if test="${sessionScope.user.admin == 1}">
+                <table class="table table-striped mt-4">
+                    <tr class="">
+                        <th>Email</th>
+                        <th>Ordre Id</th>
+                        <th>Dato</th>
+                        <th>Total Pris</th>
+                        <th>Betalt</th>
+                        <th>Se Fulde Order</th>
+                    </tr>
+
+                    <c:forEach var="order" items="${sessionScope.userOrders}" varStatus="loop">
+                        <tr>
+                            <td>${order.userEmail}</td>
+                            <td>${order.orderId}</td>
+                            <td>${order.orderDate}</td>
+                            <td>${sessionScope.userOrdersPrice.get(loop.index)}</td>
+                            <td>${order.payed}</td>
+                            <td><button class="btn btn-info text-light" onclick="window.location.href='http://localhost:8080/cupcake/seeorder?orderid=${order.orderId}'">
+                                Gå til ordren
+                            </button></td>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </c:if>
         </c:if>
 
         <c:if test="${sessionScope.user == null}">

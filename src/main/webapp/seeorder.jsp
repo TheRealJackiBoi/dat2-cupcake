@@ -10,6 +10,7 @@
     <jsp:attribute name="footer">Se Order</jsp:attribute>
 
     <jsp:body>
+        <c:if test="${sessionScope.user != null}">
         <div class="Recceipt">
             <table>
                 <tr class="top">
@@ -46,22 +47,28 @@
 
                 <tr class="heading">
                     <td>Items: </td>
+                    <td>Buttom: </td>
+                    <td>Top: </td>
 
                     <td>Price</td>
                 </tr>
                 <c:forEach var="cupcake" items="${requestScope.orderCupcakes}">
                     <tr>
-                        <td>${cupcake.quantity}stk </td> <td> ${cupcake.bottomCake.name}</td> <td> ${cupcake.topCake.name} </td>
+                        <td> ${cupcake.amount}stk.</td> <td> ${cupcake.bottomCake.name}</td> <td>${cupcake.topCake.name}</td> <td>${cupcake.price} kr.</td>
                     </tr>
+
+
                 </c:forEach>
 
                 <tr class="total">
                     <td></td>
-
-                    <td>Total: ${requestScope.orderTotalPrice}</td>
+                    <td></td>
+                    <td><b>Total Price:</b></td>
+                    <td><b>${requestScope.orderTotalPrice} kr.</b></td>
                 </tr>
             </table>
         </div>
+        </c:if>
         <c:if test="${sessionScope.user == null}">
             <p>You are not logged in yet. You can do it here: <a
                     href="../login.jsp">Login</a></p>
