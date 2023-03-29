@@ -87,7 +87,7 @@
             <div>
                 <label>Din totale pris ${sessionScope.totalprice}Kr</label>
             </div>
-            <form name="confirmorder" action="confirmorder" method="POST">
+            <form name="confirmorder" action="orderConfirmation" method="get">
                 <fieldset style="margin-top: 50px">
                     <legend style="font-weight: bold; font-size: 20px">Vælg betalingsmetode:</legend>
 
