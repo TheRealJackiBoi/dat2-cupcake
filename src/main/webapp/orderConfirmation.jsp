@@ -23,7 +23,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    Order Nummer: ${sessionScope.currentOrderId}
+                                    Order Nummer: ${sessionScope.orderConfirmOrder.orderId}
                                 </td>
                             </tr>
                             <tr>
