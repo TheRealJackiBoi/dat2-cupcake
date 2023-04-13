@@ -97,9 +97,12 @@ public class ordering extends HttpServlet {
 
             List<CupCake> orderList = CupCakeFacade.getCakesByOrderId(orderId, connectionPool);
 
-            //prøver at løse at jeg kun kan få vist id for top og bottom af hver kage
-            CupCake tempCupCake = new CupCake(BottomCakeFacade.getBottom(cupcakeBottom,connectionPool),
-                    TopCakeFacade.getTop(cupcakeTop, connectionPool), numberOfCakes,price, cupcakeId);
+            //no
+            CupCake tempCupCake = new CupCake(
+                    BottomCakeFacade.getBottom(cupcakeBottom,connectionPool),
+                    TopCakeFacade.getTop(cupcakeTop, connectionPool),
+                    numberOfCakes,price, cupcakeId);
+
             List<CupCake> currentOrderList = new ArrayList<>();
             if(session.getAttribute("currentOrderList") != null){
                 currentOrderList = (List<CupCake>) session.getAttribute("currentOrderList");

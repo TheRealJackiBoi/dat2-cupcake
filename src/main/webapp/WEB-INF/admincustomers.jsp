@@ -41,9 +41,9 @@
                             </td>
                             <td>
                                 <button type="submit" class="btn btn-outline-success btn-sm"
-                                        onclick="window.location.href='http://localhost:8080/cupcake/orders';">Orders</button>
+                                        onclick="window.location.href='${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/cupcake/orders';">Orders</button>
                                 <button type="submit" class="btn btn-outline-warning btn-sm" formaction="editcustomer"
-                                        onclick="window.location.href='http://localhost:8080/cupcake/edituserinfo?email=${user.username}';">Edit</button>
+                                        onclick="window.location.href='${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/cupcake/edituserinfo?email=${user.username}';">Edit</button>
                             </td>
                         </tr>
                  </c:forEach>

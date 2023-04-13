@@ -54,7 +54,7 @@
                             <td>${order.orderDate}</td>
                             <td>${sessionScope.userOrdersPrice.get(loop.index)}</td>
                             <td>${order.payed}</td>
-                            <td><button class="btn btn-info text-light" onclick="window.location.href='http://localhost:8080/cupcake/seeorder?orderid=${order.orderId}'">
+                            <td><button class="btn btn-info text-light" onclick="window.location.href='${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/cupcake/seeorder?orderid=${order.orderId}'">
                                 Gå til ordren
                             </button></td>
                         </tr>

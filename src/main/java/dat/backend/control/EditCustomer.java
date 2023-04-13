@@ -45,7 +45,10 @@ public class EditCustomer extends HttpServlet {
         }
         try {
             UserMapper.updateUser(email, balance, admin, connectionPool);
-            user = UserFacade.getUserByEmail(email, connectionPool);
+
+            //update current user
+            HttpSession session = request.getSession();
+            user = UserFacade.getUserByEmail(((User)session.getAttribute("user")).getUsername(), connectionPool);
             request.getSession().setAttribute("user", user);
             response.sendRedirect("admincustomers");
         } catch (DatabaseException e) {

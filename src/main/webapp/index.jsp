@@ -24,10 +24,10 @@
                 <div class="text">
                     <h3>Lækkersulten? Kig ind</h3>
                     <c:if test="${sessionScope.user != null}">
-                        <button class="indexbutton" onclick="window.location.href='http://localhost:8080/cupcake/ordering';">Bestil cupcakes</button>
+                        <button class="indexbutton" onclick="window.location.href='${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/cupcake/ordering';">Bestil cupcakes</button>
                     </c:if>
                     <c:if test="${sessionScope.user == null}">
-                        <button class="indexbutton" onclick="window.location.href='http://localhost:8080/cupcake/login.jsp';">Bestil cupcakes</button>
+                        <button class="indexbutton" onclick="window.location.href='${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/cupcake/login.jsp';">Bestil cupcakes</button>
                     </c:if>
                 </div>
             </div>
