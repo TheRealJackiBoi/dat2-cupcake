@@ -1,6 +1,9 @@
 # Cupcake Marts 2023
 Det her er vores Cupcake webshops projekt fra 2. semester på datamatiker studiet på CPH Business Lyngby. Vi har bygget en webapplikation efter mvc strukturen. Den er bygget med en MySQL database, Java Backend
 
+### Demovideo
+https://www.youtube.com/watch?v=BQ2x0Y5cg0I
+
 ## Gruppemedlemmer
 - Bjarke Olaf Dehlie - cph-bd89@cphbusiness.dk - https://github.com/artiecodes 
 - William Emil Yus Hansen - cph-wh113@cphbusiness.dk - https://github.com/asphixia 
