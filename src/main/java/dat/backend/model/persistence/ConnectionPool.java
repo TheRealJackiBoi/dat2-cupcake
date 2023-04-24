@@ -13,9 +13,9 @@ public class ConnectionPool
     // TODO: Change access credentials for MySql server as needed below:
 
     private HikariDataSource ds;
-    private static String USER = "cudia_dk";
-    private static String PASSWORD = "mEy6xwhn2gczftDkerba";
-    private static String URL = "jdbc:mysql://mysql24.unoeuro.com:3306/cudia_dk_db_cupcake";
+    private static String USER = "root";
+    private static String PASSWORD = "password";
+    private static String URL = "jdbc:mysql://localhost:3306/cupcake";
 
     public ConnectionPool()
     {
